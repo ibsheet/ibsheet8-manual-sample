@@ -3,7 +3,7 @@ ib = {
 "LeftInit" : {
   //공통기능 설정 부분
   "Cfg": {
-      "CanDrag": 1
+      CanDrag: 1
     },
     //중앙(메인) 컬럼 설정
   "Cols": [
@@ -37,7 +37,7 @@ ib = {
     "Cfg": {
       "SearchMode": 2,
       "MainCol": "sName",
-      "CanDrag": 1
+      CanDrag: 1
     },
     //틀고정 좌측 컬럼 설정
   "LeftCols": [
