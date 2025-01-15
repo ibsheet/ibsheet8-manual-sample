@@ -57,5 +57,5 @@ ib = {
 ib.create();
 
 document.querySelector("#sel").addEventListener("change", function(evt) {
-  sheet['DataMerge'] = evt.target.value;
+  sheet.setAutoMerge({dataMerge: evt.target.value});
 })
