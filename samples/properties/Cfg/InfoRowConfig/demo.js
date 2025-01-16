@@ -7,6 +7,7 @@ ib = {
     "SearchMode": 1,
     "MessageWidth": 300,
     "CanSort": 0,
+    "PageLength": 50,
     InfoRowConfig: {
       Visible: 1,
       Layout: ["Paging", "SummaryLabel", "Count"]
@@ -14,8 +15,7 @@ ib = {
   },
   "Def": {
     "Row": {
-      "CanFormula": true,
-      PageLength: 50
+      "CanFormula": true
     }
   },
   //틀고정 좌측 컬럼 설정
@@ -68,29 +68,7 @@ ib = {
 
         evt.sheet.doSearch(param);
       }
-    },
-    onBeforeDataLoad:function (evt) {
-      // 조회 후 로딩 전 발생 이벤트
-      var d = evt.data;
-      var _data;
-
-      // 서버에서 가져온 데이터를 "데이터" 텝에 넣어준다.
-      if (d.length > 20) { // 최대 20개 행만 텝에 넣어 주자(많아지면 화면이 엄청 느려질 수 있음)
-        _data = JSON.stringify(d.slice(0, 20), null, 2);
-        _data += _data.substring(0, _data.length - 1) + '...\n]';
-      } else {
-        _data = JSON.stringify(d, null, 2);
-      }
-      
-    },
-    /*
-    onAfterGotoPage:function (evt) {
-      var sheet = evt.sheet;
-      var page = sheet.getPageIndex(sheet.getFocusedPage()) + 1;
-
-      makePageIndex(page);
     }
-    */
 },
 //시트객체 생성
 'create':function () {
@@ -105,25 +83,26 @@ ib = {
   },
 //화면 기능
 'sampleBtn':function () {
+  IBSheet.disposeAll(true);
+
   var sMode = arguments[1]; // 1:클라이언트페이징 , 2:서버페이징 , 3:서버스크롤페이징
 
   ib.init.Cfg = {
-    SearchMode: sMode,
-    Alternate: 2,
+    "SearchMode": sMode,
+    "Alternate": 2,
+    "PageLength": 50,
     InfoRowConfig: {
       Visible: 1,
       Layout: ["SummaryLabel", "Count"]
     }
   };
   if (sMode === 1) {
-    ib.init.Cfg.PageLength = 50;
     ib.init.Cfg.InfoRowConfig = {
       Visible: 1,
       Layout: ["Paging", "SummaryLabel", "Count"]
     }
   } else if (sMode === 4) {
     ib.init.Cfg.SortCurrentPage = 1;
-    ib.init.Cfg.PageLength = 50;
     ib.init.Cfg.InfoRowConfig = {
         Visible: 1,
         Layout: ["Paging2", "Count"],
@@ -133,8 +112,6 @@ ib = {
     }
   }
   ib.create(); // 시트 생성
-},
-//조회 데이터
-'data':[{}]
+}
 }
 ib.create();
