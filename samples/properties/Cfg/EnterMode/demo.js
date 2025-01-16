@@ -22,7 +22,7 @@ ib = {
     {"Header": "문자열(Text)","Type": "Text","Name": "TextData","Width": 100,"Align": "Center","CanEdit": 1},
     {"Header": "줄넘김문자열(Lines)","Type": "Lines","Name": "LinesData","MinWidth": 250,"Align": "Center","CanEdit": 1,"RelWidth": 1},
     {"Header": "콤보(Enum)","Type": "Enum","Name": "ComboData","Width": 100,"Align": "Right","Enum": "|대기|진행중|완료","EnumKeys": "|01|02|03"},
-    {"Header": "버튼(Button)\n CanFormus:0","Type": "Button","Name": "ISO","Width": 80,"Align": "Left","CanEdit": 0,"Button": "Button", CanFocus: 0},
+    {"Header": "버튼(Button)\n CanFormus:0","Type": "Button","Name": "ISO","Width": 120,"Align": "Left","CanEdit": 0,"Button": "Button", CanFocus: 0},
     {"Header": "정수(Int)","Type": "Int","Name": "IntData","Width": 80,"Align": "Right","CanEdit": 1},
     {"Header": "실수(Float)","Type": "Float","Name": "FloatData","Width": 80,"Align": "Right","CanEdit": 1},
     {"Header": "날짜(Date)","Type": "Date","Name": "DateData","Width": 150,"Align": "Center","CanEdit": 1,"EmptyValue": "날짜를 입력해주세요"},
@@ -60,14 +60,4 @@ ib.create();
 
 document.querySelector("#mode").addEventListener("change", function(evt) {
   sheet.setEnterMode(evt.target.value);
-  /*
-  sheet['EnterMode'] = {
-    mode: evt.target.value
-  };
-  */
-  /*
-  sheet.reload(function(){
-  	sheet.loadSearchData(ib.data);
-  });
-  */
 })
