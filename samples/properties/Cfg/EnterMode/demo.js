@@ -59,9 +59,12 @@ ib = {
 ib.create();
 
 document.querySelector("#mode").addEventListener("change", function(evt) {
+  sheet.setEnterMode(evt.target.value);
+  /*
   sheet['EnterMode'] = {
     mode: evt.target.value
   };
+  */
   /*
   sheet.reload(function(){
   	sheet.loadSearchData(ib.data);
