@@ -66,7 +66,7 @@ ib = {
       sheet.showTreeLevel(document.getElementById('level').value);
       break;
     case '노드연결선 감추기':
-      heet.NoTreeLines = 1;
+      sheet.NoTreeLines = 1;
       sheet.rerender();
       arguments[0].value = '노드연결선 표시하기';
       break;
