@@ -6,9 +6,9 @@ ib = {
   "Cfg": {
     "SearchMode": 2,
     "MessageWidth": 300,
-    NoDataMessage: 1,
-    NoDataMiddle: 1,
-    FitWidth: 1
+    "FitWidth": 1,
+    NoDataMessage: 3,
+    NoDataMiddle: 1
   },
   "Def": {
     "Row": {
