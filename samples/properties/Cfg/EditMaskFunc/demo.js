@@ -7,7 +7,6 @@ ib = {
     "SearchMode": 2,
     "HeaderMerge": 3,
     "MessageWidth": 300,
-    //"GetByDataFormat": 1,
     EditMaskFunc: {
       "sMoney": sMoneyMask,
       "sMoneyResolve": sMoneyResolveMask,
