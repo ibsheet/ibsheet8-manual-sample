@@ -7,7 +7,7 @@ ib = {
     },
     //중앙(메인) 컬럼 설정
   "Cols": [
-      {"Header": "","Type": "Bool","Name": "chk","MinWidth": 35,"Align": "Center","CanEdit": 1},
+      {"Header": " ","Type": "Bool","Name": "chk","MinWidth": 35,"Align": "Center","CanEdit": 1},
       {"Header": "직급","Type": "Text","Name": "sPos","MinWidth": 60,"Align": "Center","CanEdit": 0},
       {"Header": "성명","Type": "Text","Name": "sName","MinWidth": 50,"Align": "Center","CanEdit": 0,"RelWidth": 1},
       {"Header": "성별","Type": "Enum","Name": "sSex","MinWidth": 40,"Align": "Center","Enum": "|男|女","EnumKeys": "|남|여"},
