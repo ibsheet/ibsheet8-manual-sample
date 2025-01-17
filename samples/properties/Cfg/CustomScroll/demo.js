@@ -60,8 +60,7 @@ ib = {
 ib.create();
 
 document.querySelector("#sel").addEventListener("change", function(evt) {
-  sheet['CustomScroll'] = evt.target.value;
-  sheet.reload(function(){
-  	sheet.loadSearchData(ib.data);
-  });
+  ib.init.Cfg.CustomScroll = Number(evt.target.value);
+  if(typeof sheet != 'undefiend') sheet.dispose(); // sheet 객체가 존재할 시 sheet제거
+  ib.create();
 })
