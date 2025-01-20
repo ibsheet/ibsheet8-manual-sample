@@ -7,7 +7,7 @@ ib = {
     "SearchMode": 2,
     "HeaderMerge": 3,
     "MessageWidth": 300,
-    Size: "NorMal"
+    Size: "Normal"
   },
   "Def": {
     "Row": {
@@ -21,7 +21,7 @@ ib = {
   //중앙(메인) 컬럼 설정
   "Cols": [
     {"Header": "문자열(Text)","Type": "Text","Name": "TextData","Width": 100,"Align": "Center","CanEdit": 1},
-    {"Header": "줄넘김문자열(Lines)","Type": "Lines","Name": "LinesData","MinWidth": 250,"Align": "Center","CanEdit": 1,"RelWidth": 1},
+    {"Header": "줄넘김문자열(Lines)","Type": "Text","Name": "LinesData","Width": 250,"Align": "Center","CanEdit": 1},
     {"Header": "콤보(Enum)","Type": "Enum","Name": "ComboData","Width": 100,"Align": "Right","Enum": "|대기|진행중|완료","EnumKeys": "|01|02|03"},
     {"Header": "버튼(Button)\n CanFormus:0","Type": "Button","Name": "ISO","Width": 120,"Align": "Left","CanEdit": 0,"Button": "Button"},
     {"Header": "정수(Int)","Type": "Int","Name": "IntData","Width": 80,"Align": "Right","CanEdit": 1},
