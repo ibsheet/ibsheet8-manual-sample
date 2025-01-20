@@ -54,6 +54,6 @@ ib = {
 'sampleBtn':function () {
 },
 //조회 데이터
-'data':[{}]
+'data':[]
 }
 ib.create();
