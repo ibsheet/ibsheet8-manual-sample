@@ -7,6 +7,7 @@ ib = {
     "SearchMode": 2,
     "HeaderMerge": 3,
     "MessageWidth": 300,
+    "IgnoreFocused": 1,
     Size: "Normal"
   },
   "Def": {
