@@ -61,7 +61,6 @@ for(var ele of selElements) {
     var head = document.querySelector("#hSel").value;
     var data = document.querySelector("#dSel").value;
     var prev = document.querySelector("#pSel").value;
-    //debugger;
     sheet.setAutoMerge({headerMerge: head, dataMerge: data, prevColumnMerge: prev});
   })
 }
