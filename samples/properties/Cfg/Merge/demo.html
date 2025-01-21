@@ -9,7 +9,9 @@
 <script src="https://demo.ibsheet.com/ibsheet/v8/samples/customer-sample/assets/ibsheet/plugins/ibsheet-dialog.js"></script>
 <script src="https://demo.ibsheet.com/ibsheet/v8/samples/customer-sample/assets/ibsheet/plugins/ibsheet-excel.js"></script>
 
-<select id="sel">
+<div class="doFix">
+헤더 병합 조건
+<select id="hSel" class="sel">
     <option value="0" selected>0 (병합 안함)</option>
     <option value="1">1 (열 기준 병합)</option>
     <option value="2">2 (행 기준 병합)</option>
@@ -18,5 +20,25 @@
     <option value="5">5 (열 우선 사방 병합)</option>
     <option value="6">6 (행 우선 사방 병합)</option>
 </select>
+<br>
+데이터 병합 조건
+<select id="dSel" class="sel">
+    <option value="0" selected>0 (병합 안함)</option>
+    <option value="1">1 (열 기준 병합)</option>
+    <option value="2">2 (행 기준 병합)</option>
+    <option value="3">3 (열 우선 병합)</option>
+    <option value="4">4 (행 우선 병합)</option>
+    <option value="5">5 (열 우선 사방 병합)</option>
+    <option value="6">6 (행 우선 사방 병합)</option>
+</select>
+<br>
+앞컬럼 기준 병합 조건
+<select id="pSel" class="sel">
+    <option value="0" selected>0 (전체영역에 앞컬럼 기준 병합 안함함)</option>
+    <option value="1">1 (데이터 영역에만 앞컬럼 기준 병합)</option>
+    <option value="2">2 (헤더 영역에만 앞컬럼 기준 병합)</option>
+    <option value="3">3 (헤더 및 데이터 영역에 앞컬럼 기준 병합)</option>
+</select>
+</div>
 <br>
 <div style='height:500px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>

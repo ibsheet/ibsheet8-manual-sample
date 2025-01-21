@@ -1,0 +1,8 @@
+a{text-decoration:none;color:#4444FF;}
+.doFix {
+    height: 100px;
+    width: 500px;
+    position: fixed;
+    top: 30%;
+    right: 100px;
+}
