@@ -7,7 +7,7 @@ ib = {
     "SearchMode": 0,
     "HeaderMerge": 3,
     "MessageWidth": 300,
-    CanColMove: 1
+    CanColMove: 2
   },
   "Def": {
     "Row": {
