@@ -21,8 +21,8 @@ ib = {
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
-    {Header: "원본", Type: "Float", Name: "nFloat", Width: 100},
-    {Header: "근사값", Type: "Float", Name: "nFloat2", Width: 100, Format: "#,##0.##"}
+    {Header: "원본", Type: "Float", Name: "nFloat", Width: 200},
+    {Header: "근사값(소수점 2째자리까지)", Type: "Float", Name: "nFloat2", Width: 200, Format: "#,##0.00"}
   ]
 },
 //시트 이벤트
