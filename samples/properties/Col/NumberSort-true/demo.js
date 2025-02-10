@@ -17,11 +17,11 @@ ib = {
   },
   //틀고정 좌측 컬럼 설정
   "LeftCols": [
-    {"Type": "Int","Width": 50,"Align": "Center","Name": "SEQ"}
+    {"Type": "Int","Width": 100,"Align": "Center","Name": "SEQ"}
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
-    {"Header": "문자열(Text)","Type": "Text","Name": "TextData","Width": 100,"Align": "Center","CanEdit": 1, NumberSort: 1},
+    {"Header": "문자열(Text)","Type": "Text","Name": "TextData","Width": 150,"Align": "Center","CanEdit": 1, NumberSort: 1},
   ]
 },
 //시트 이벤트
