@@ -18,7 +18,7 @@ ib = {
   "LeftCols": [
     {"Type": "Int","Width": 50,"Align": "Center","Name": "SEQ"},
     {Header: "상태", Name: "status", Extend: IB_Preset.STATUS},
-    {Header: "삭제여부", Name: "del", Extend: IB_Preset.DelCheck}
+    {Header: "삭제", Name: "del", Extend: IB_Preset.DelCheck}
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
