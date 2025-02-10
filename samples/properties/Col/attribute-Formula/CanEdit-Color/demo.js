@@ -11,7 +11,8 @@ ib = {
   },
   "Def": {
     "Row": {
-      "CanFormula": true
+      CanFormula: true,
+      CalcOrder: "TextDataCanEdit,IntDataColor"
     }
   },
   //틀고정 좌측 컬럼 설정
@@ -21,18 +22,19 @@ ib = {
   //중앙(메인) 컬럼 설정
   "Cols": [
     {"Header": "문자열(Text)","Type": "Text","Name": "TextData","Width": 100,"Align": "Center","CanEdit": 1,
-      ColorFormula: function(fr) {
-        if(fr.Row['IntData'] < 100) {
-          return "yellow";
-        } else {
-          return "#2ecc71";
-        }
-      },
       CanEditFormula: function(fr) {
         return fr.Row['CheckData'];
       }
     },
-    {"Header": "정수(Int)","Type": "Int","Name": "IntData","Width": 80,"Align": "Right","CanEdit": 1},
+    {"Header": "정수(Int)","Type": "Int","Name": "IntData","Width": 80,"Align": "Right","CanEdit": 1,
+    	ColorFormula: function(fr) {
+        if(fr.Value < 100) {
+          return "yellow";
+        } else {
+          return "#2ecc71";
+        }
+      }
+    },
     {"Header": "체크박스(Bool)","Type": "Bool","Name": "CheckData","Width": 80,"Align": "Center","CanEdit": 1}
   ]
 },
@@ -60,7 +62,3 @@ ib = {
 'data':[{"TextData":"장순연","IntData":0,"CheckData":1},{"TextData":"김정호","IntData":0,"CheckData":0},{"TextData":"정상호","IntData":65,"CheckData":1},{"TextData":"안수현","IntData":190,"CheckData":1},{"TextData":"박만우","IntData":1120,"CheckData":0},{"TextData":"최호건","IntData":65,"CheckData":0},{"TextData":"이민후","IntData":0,"CheckData":1},{"TextData":"김호정","IntData":1120,"CheckData":0},{"TextData":"김호수","IntData":65,"CheckData":1},{"TextData":"오미려","IntData":190,"CheckData":1},{"TextData":"차수식","IntData":1120,"CheckData":0},{"TextData":"맹인주","IntData":65,"CheckData":0},{"TextData":"전명준","IntData":190,"CheckData":1}]
 }
 ib.create();
-
-function fn_addRow() {
-  sheet.addRow();
-}
