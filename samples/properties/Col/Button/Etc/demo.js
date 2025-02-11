@@ -26,7 +26,7 @@ ib = {
 },
 //시트 이벤트
 'event':{
-  onRenderFinish: function (evt) {
+  onRenderFirstFinish: function (evt) {
     evt.sheet.loadSearchData(ib.data);
   },
   onButtonClick: function (evt) {
