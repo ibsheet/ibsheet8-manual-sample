@@ -6,12 +6,15 @@ ib = {
   "Cfg": {
     "SearchMode": 2,
     "HeaderMerge": 3,
+    "DataMerge": 1,
     "MessageWidth": 300,
-    "IgnoreFocused": 1
+    "IgnoreFocused": 1,
+    "FitWidth": 1
   },
   "Def": {
     "Row": {
-      CanFormula: true
+      CanFormula: true,
+      CalcOrder: "nSum,nAvg"
     }
   },
   //틀고정 좌측 컬럼 설정
@@ -20,14 +23,16 @@ ib = {
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
-    {"Header":"분야", "Type": "Text", "Name": "sCategory", "Width": 200, "Align": "Center"},
-    {"Header":"직업별", "Type": "Text", "Name": "sOccupation", "Width": 250, "Align": "Center"},
-    {"Header":"2024.07", "Type": "Int", "Name": "n202407", "Width": 100},
-    {"Header":"2024.08", "Type": "Int", "Name": "n202408", "Width": 100},
-    {"Header":"2024.09", "Type": "Int", "Name": "n202409", "Width": 100},
-    {"Header":"2024.10", "Type": "Int", "Name": "n202410", "Width": 100},
-    {"Header":"2024.11", "Type": "Int", "Name": "n202411", "Width": 100},
-    {"Header":"2024.12", "Type": "Int", "Name": "n202412", "Width": 100}
+    {"Header": "분야", "Type": "Text", "Name": "sCategory", "Width": 300, "Align": "Center"},
+    {"Header": "직업별", "Type": "Text", "Name": "sOccupation", "Width": 250, "Align": "Center"},
+    {"Header": "2024.07", "Type": "Int", "Name": "n202407", "Width": 150, "FormulaRow": "Sum"},
+    {"Header": "2024.08", "Type": "Int", "Name": "n202408", "Width": 150, "FormulaRow": "Sum"},
+    {"Header": "2024.09", "Type": "Int", "Name": "n202409", "Width": 150, "FormulaRow": "Sum"},
+    {"Header": "2024.10", "Type": "Int", "Name": "n202410", "Width": 150, "FormulaRow": "Sum"},
+    {"Header": "2024.11", "Type": "Int", "Name": "n202411", "Width": 150, "FormulaRow": "Sum"},
+    {"Header": "2024.12", "Type": "Int", "Name": "n202412", "Width": 150, "FormulaRow": "Sum"},
+    {"Header": "총계", "Type": "Int", "Name": "nSum", "Width": 100, Formula: function(fr) {return fr.Row["n202407"]+fr.Row["n202408"]+fr.Row["n202409"]+fr.Row["n202410"]+fr.Row["n202411"]+fr.Row["n202412"]}, "FormulaRow": "총 {Sum}"},
+    {"Header": "평균", "Type": "Int", "Name": "nAvg", "Width": 100, Formula: function (fr) {return (fr.Row["nSum"]/6)}, "FormulaRow": "평균 {Avg}"}
   ]
 },
 //시트 이벤트
