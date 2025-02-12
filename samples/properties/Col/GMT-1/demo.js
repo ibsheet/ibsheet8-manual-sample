@@ -39,9 +39,6 @@ ib = {
       el: 'sheetDiv', // 시트를 생성할 Dom 객체 및 id
       options: options, // 생성될 시트의 속성
     });
-  },
-//화면 기능
-'sampleBtn':function () {
 },
 //조회 데이터
 'data':[{"orgText":"","sDate_YmdHmsz":""},{"orgText":"20241104000000","sDate_YmdHmsz":"20241104T000000Z"},{"orgText":"1730646000000 (한국표준시 Timestamp)","sDate_YmdHmsz":"1730646000000"},{"orgText":"2024-11-04T00:00:00+09:00","sDate_YmdHmsz":"2024-11-04T00:00:00+09:00"},{"orgText":"2024-11-04T00:00:00Z","sDate_YmdHmsz":"2024-11-04T00:00:00Z"},{"orgText":"2024-11-04T00:00:00","sDate_YmdHmsz":"2024-11-04T00:00:00"},{"orgText":"2024-11-04T00:00:00-05:00","sDate_YmdHmsz":"2024-11-04T00:00:00-05:00"},{"orgText":"1730696400000 (뉴욕표준시 Timestamp)","sDate_YmdHmsz":"1730696400000"}]

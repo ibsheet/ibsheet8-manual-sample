@@ -49,9 +49,6 @@ ib = {
       el: 'sheetDiv', // 시트를 생성할 Dom 객체 및 id
       options: options, // 생성될 시트의 속성
     });
-  },
-//화면 기능
-'sampleBtn':function () {
 },
 //조회 데이터
 'data':[]

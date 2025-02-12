@@ -54,9 +54,6 @@ ib = {
       el: 'sheetDiv', // 시트를 생성할 Dom 객체 및 id
       options: options, // 생성될 시트의 속성
     });
-  },
-//화면 기능
-'sampleBtn':function () {
 },
 //조회 데이터
 'data':[{"TextData":"장순연","IntData":0,"CheckData":1},{"TextData":"김정호","IntData":0,"CheckData":0},{"TextData":"정상호","IntData":65,"CheckData":1},{"TextData":"안수현","IntData":190,"CheckData":1},{"TextData":"박만우","IntData":1120,"CheckData":0},{"TextData":"최호건","IntData":65,"CheckData":0},{"TextData":"이민후","IntData":0,"CheckData":1},{"TextData":"김호정","IntData":1120,"CheckData":0},{"TextData":"김호수","IntData":65,"CheckData":1},{"TextData":"오미려","IntData":190,"CheckData":1},{"TextData":"차수식","IntData":1120,"CheckData":0},{"TextData":"맹인주","IntData":65,"CheckData":0},{"TextData":"전명준","IntData":190,"CheckData":1}]

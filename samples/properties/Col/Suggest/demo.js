@@ -34,9 +34,6 @@ ib = {
       options: options, // 생성될 시트의 속성
       data: [{CarName:"현대"},{CarName:"기아"},{CarName:"삼성성"},{CarName:"BMW"},{CarName:"포르쉐"}]
     });
-  },
-//화면 기능
-'sampleBtn':function () {
 }
 }
 ib.create();
