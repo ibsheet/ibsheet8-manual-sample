@@ -39,8 +39,8 @@ ib = {
         col: evt.col,
         dialog: {
           Modal: 1,
-          Body: "<div>Button Click !!</div>"
-          +"<div style='text-align: center'><button type='button' onclick='func_process()'>닫기</button></div>"
+          Body: "<div>영화명: "+evt.sheet.getValue(evt.row, evt.col)+"</div>"
+          +"<div style='text-align: center'><button type='button' onclick='func_process()'>확인</button></div>"
         }
       }
       evt.sheet.showDialog(opt);
