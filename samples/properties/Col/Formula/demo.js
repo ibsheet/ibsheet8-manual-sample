@@ -25,12 +25,12 @@ ib = {
   "Cols": [
     {"Header": "분야", "Type": "Text", "Name": "sCategory", "Width": 300, "Align": "Center"},
     {"Header": "직업별", "Type": "Text", "Name": "sOccupation", "Width": 250, "Align": "Center"},
-    {"Header": "2024.07", "Type": "Int", "Name": "n202407", "Width": 150, "FormulaRow": "Sum"},
-    {"Header": "2024.08", "Type": "Int", "Name": "n202408", "Width": 150, "FormulaRow": "Sum"},
-    {"Header": "2024.09", "Type": "Int", "Name": "n202409", "Width": 150, "FormulaRow": "Sum"},
-    {"Header": "2024.10", "Type": "Int", "Name": "n202410", "Width": 150, "FormulaRow": "Sum"},
-    {"Header": "2024.11", "Type": "Int", "Name": "n202411", "Width": 150, "FormulaRow": "Sum"},
-    {"Header": "2024.12", "Type": "Int", "Name": "n202412", "Width": 150, "FormulaRow": "Sum"},
+    {"Header": "2024.07", "Type": "Int", "Name": "n202407", "Width": 100, "FormulaRow": "Sum"},
+    {"Header": "2024.08", "Type": "Int", "Name": "n202408", "Width": 100, "FormulaRow": "Sum"},
+    {"Header": "2024.09", "Type": "Int", "Name": "n202409", "Width": 100, "FormulaRow": "Sum"},
+    {"Header": "2024.10", "Type": "Int", "Name": "n202410", "Width": 100, "FormulaRow": "Sum"},
+    {"Header": "2024.11", "Type": "Int", "Name": "n202411", "Width": 100, "FormulaRow": "Sum"},
+    {"Header": "2024.12", "Type": "Int", "Name": "n202412", "Width": 100, "FormulaRow": "Sum"},
     {"Header": "총계", "Type": "Int", "Name": "nSum", "Width": 100, Formula: "n202407+n202408+n202409+n202410+n202411+n202412", "FormulaRow": "총 {Sum}"},
     {"Header": "평균", "Type": "Int", "Name": "nAvg", "Width": 100, Formula: function (fr) {return (fr.Row["nSum"]/6)}, "FormulaRow": "평균 {Avg}"}
   ]
