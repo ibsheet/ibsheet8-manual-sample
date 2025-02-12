@@ -19,10 +19,10 @@ ib = {
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
-    {"Header": "A1,C1","Type": "Text","Name": "sCheck","Width": 200,"Align": "Center", AddEdit: 1, ChangeEdit: 1},
-    {"Header": "A1,C0","Type": "Text","Name": "sClear","Width": 200,"Align": "Center", AddEdit: 1, ChangeEdit: 0},
-    {"Header": "A0,C1","Type": "Text","Name": "sEtc","Width": 200,"Align": "Center", AddEdit: 0, ChangeEdi: 1},
-    {"Header": "Button Button","Type": "Text","Name": "sButton","Width": 200,"Align": "Center", AddEdit: 0, ChangeEdi: 0}
+    {"Header": ["추가 수정 가능", "조회 수정 가능"],"Type": "Text","Name": "sCheck","Width": 200,"Align": "Center", AddEdit: 1, ChangeEdit: 1},
+    {"Header": ["추가 수정 가능", "조회 수정 불가"],"Type": "Text","Name": "sClear","Width": 200,"Align": "Center", AddEdit: 1, ChangeEdit: 0},
+    {"Header": ["추가 수정 불가", "조회 수정 가능"],"Type": "Text","Name": "sEtc","Width": 200,"Align": "Center", AddEdit: 0, ChangeEdit: 1},
+    {"Header": ["추가 수정 불가", "조회 수정 불가"],"Type": "Text","Name": "sButton","Width": 200,"Align": "Center", AddEdit: 0, ChangeEdit: 0}
   ]
 },
 //시트 이벤트
