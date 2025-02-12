@@ -31,7 +31,7 @@ ib = {
     {"Header": "2024.10", "Type": "Int", "Name": "n202410", "Width": 150, "FormulaRow": "Sum"},
     {"Header": "2024.11", "Type": "Int", "Name": "n202411", "Width": 150, "FormulaRow": "Sum"},
     {"Header": "2024.12", "Type": "Int", "Name": "n202412", "Width": 150, "FormulaRow": "Sum"},
-    {"Header": "총계", "Type": "Int", "Name": "nSum", "Width": 100, Formula: function(fr) {return fr.Row["n202407"]+fr.Row["n202408"]+fr.Row["n202409"]+fr.Row["n202410"]+fr.Row["n202411"]+fr.Row["n202412"]}, "FormulaRow": "총 {Sum}"},
+    {"Header": "총계", "Type": "Int", "Name": "nSum", "Width": 100, Formula: "n202407+n202408+n202409+n202410+n202411+n202412", "FormulaRow": "총 {Sum}"},
     {"Header": "평균", "Type": "Int", "Name": "nAvg", "Width": 100, Formula: function (fr) {return (fr.Row["nSum"]/6)}, "FormulaRow": "평균 {Avg}"}
   ]
 },
