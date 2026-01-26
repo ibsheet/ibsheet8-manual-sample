@@ -15,7 +15,7 @@ ib = {
     "Cfg": {
       "SearchMode": 0,
       "Export": {
-        "Url": "https://api.ibleaders.com/ibsheet/v8/"
+        "Url": "https://api.ibsheet.com/ibsheet/v8/"
       }
 
     },
