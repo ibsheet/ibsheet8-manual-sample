@@ -1,0 +1,45 @@
+<link rel="stylesheet" href="https://www.ibsheet.com/v8/assets/lib/ibsheet/css/default/main.css"/>
+<!--  ibsheet 필수 js -->
+<script src="https://www.ibsheet.com/v8/assets/lib/iblicense.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/ibsheet.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/locale/ko.js"></script>
+
+<!--  ibsheet 선택/추가 js -->
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/plugins/ibsheet-common.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/plugins/ibsheet-dialog.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/plugins/ibsheet-excel.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/plugins/jszip.min.js"></script>
+
+<style>
+/* 버튼 관련 디자인 */
+.IBDialogButton,
+u.IBSheetButton {
+    display: inline-block;
+    background: #e7f0ff;
+    border: 1px solid #b6ccff;
+    color: #2f5fd0;
+    border-radius: 6px;
+    padding: 4px 12px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;       /* 부드러운 hover */
+}
+
+.IBDialogButton:hover,
+u.IBSheetButton:hover {
+    background: #93afe5;
+    color: #ffffff;                  /* hover 시 텍스트 흰색으로 강조 */
+    border-color: #7096d1;
+}
+
+/*값을 없을 경우 border 표시방지*/
+u.IBSheetButton:empty {
+    border: none !important;
+    background: transparent !important;
+}
+
+</style>
+
+
+
+<div style='height:500px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>
