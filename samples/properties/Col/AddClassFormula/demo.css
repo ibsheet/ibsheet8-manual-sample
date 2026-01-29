@@ -1,0 +1,42 @@
+.myBtn1{
+  border:3px solid #999999 !important;
+  border-radius:5px;
+  padding:4px;
+  color:black !important;
+  background-color:#ffffff !important;
+
+}
+.myBtn1:hover{
+  border:3px solid #FFFF00 !important;
+  background-color:#666 !important;
+  color:#EEEEEE !important;
+  font-weight:700;
+}
+
+.myBtn2{
+  border:3px solid #FF3344 !important;
+  background-color:#ffffff !important;
+  border-radius:5px;
+  padding:4px;
+  color:black !important;
+}
+.myBtn2:hover{
+  border:3px solid #FF8899 !important;
+  background-color:#FFFFAA !important;
+  color:#FF0000 !important;
+  font-weight:700;
+}
+
+.myBtn3{
+  border:3px solid #332244 !important;
+  background-color:#ffffff !important;
+  border-radius:5px;
+  padding:4px;
+  color:black !important;
+}
+.myBtn3:hover{
+  border:3px solid #FFEE !important;
+  background-color:#666 !important;
+  color:#EEEEEE !important;
+  font-weight:700;
+}
