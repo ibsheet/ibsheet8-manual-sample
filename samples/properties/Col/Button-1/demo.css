@@ -1,0 +1,33 @@
+.myBtn1{
+  border:3px solid #999999;
+  border-radius:5px;
+  padding:4px;
+  color:black;
+}
+.myBtn1:hover{
+  border:3px solid #FFFF00;
+  background-color:#666;
+  color:#EEEEEE;
+  font-weight:700;
+}
+
+.myBtn2{
+  border:3px solid #FF3344;
+  border-radius:5px;
+  padding:4px;
+  color:black;
+}
+.myBtn2:hover{
+  border:3px solid #FF8899;
+  background-color:#FFFFAA;
+  color:#FF0000;
+  font-weight:700;
+}
+
+.myBtn3 > u.IBSheetButton{
+  display:inline;
+  padding:3px 5px 3px 5px;
+  background-color:#EDEDED;
+  border:1px solid #BBB;
+  color:black;
+}
