@@ -1,0 +1,11 @@
+.myBtn1{
+  border:1px solid #999999;
+  padding:2px;
+  color:black;
+}
+.myBtn1:hover{
+  border:1px solid #FFFF00;
+  background-color:#666;
+  color:#EEEEEE;
+  font-weight:700;
+}
