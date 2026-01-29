@@ -33,6 +33,10 @@ ib = {
         ButtonDesing = "myBtn2";
       }else  if(fr.Row["enumData"] =="03"){
         ButtonDesing = "myBtn3";
+      }else{
+        fr.Row["btn3"] = ""; //값을 빈값으로 설정하면 버튼 표시하지 않음
+        fr.Row["btn3Cursor"] = "default"; //포인터 모양을 바꿈
+        ButtonDesing = "";
       }
 
       return ButtonDesing;
