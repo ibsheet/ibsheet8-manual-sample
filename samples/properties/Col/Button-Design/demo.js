@@ -69,8 +69,11 @@ ib = {
 ib.create();
 
 var loadData = [
-	{"btn1":"승인 보류", "btn2":"보류"},
-	{"btn1":"완료", "btn1Disabled":1, "btn2":"완료", "btn2Disabled":1},
-	{"btn1":"", "btn2":"승인"}, //btn1 컬럼의 데이터가 빈값
-  {"btn1":null,"btn2":null}, //조회 데이터가 null
+	{"btn1":"보류", "btn2":"보류", "btn3":"<div class='myBtn1'>진행중</div>"},
+	{"btn1":"완료", "btn1Disabled":1, "btn2":"완료", "btn2Disabled":1, "btn3":""},
+	{"btn1":"", "btn2":"승인", "btn3":"<div class='myBtn2'>오류</div>"}, //btn1 컬럼의 데이터가 빈값
+	{"btn1":"승인", "btn1Class":"myBtn3" ,"btn2":"대기", "btn3":""},
+  {"btn1":null,"btn2":null,"btn3":null}, //조회 데이터가 null
+  {"btn1":undefined,"btn2":undefined,"btn3":undefined}, // 조회 데이터가 undefined
+  {"btn2":undefined,"btn3":undefined} //btn1 컬럼의 데이터를 조회하지 않음
 ];
