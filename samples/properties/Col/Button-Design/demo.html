@@ -22,14 +22,21 @@ u.IBSheetButton {
     padding: 4px 12px;
     text-align: center;
     cursor: pointer;
-    transition: all 0.2s ease;       /* 부드러운 hover */
+    transition: all 0.2s ease;   
 }
 
+/*Button 에 마우스 hover 시(main.css에는 없는 class)*/
 .IBDialogButton:hover,
 u.IBSheetButton:hover {
     background: #93afe5;
-    color: #ffffff;                  /* hover 시 텍스트 흰색으로 강조 */
+    color: #ffffff;                 
     border-color: #7096d1;
+}
+
+/* 버튼 클릭시 */
+.IBDialogButton:active,u.IBToolButtonButton1,u.IBToolSpaceButton1,u.IBToolButtonButton1:active,u.IBToolSpaceButton1:active {
+    background: #041422;
+
 }
 
 /*값을 없을 경우 border 표시방지*/

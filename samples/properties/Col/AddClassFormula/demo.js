@@ -22,7 +22,7 @@ ib = {
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
-    {"Header": "데이터","Type": "Enum","Name": "enumData","Width": 100,Enum:"|대기|진행중|완료",EnumKeys:"|01|02|03"},
+    {"Header": "데이터","Type": "Enum","Name": "enumData","Width": 100,Enum:"|대기|진행중|완료|표시안함",EnumKeys:"|01|02|03|04"},
     {"Header": "버튼","Type": "Button","Name": "btn3","Width": 100, ButtonWidth :"70", AddClassFormula:function(fr) {
       //enum에 설정한 데이터를 Button 의 Text로 설정한다.
       fr.Row["btn3"] = fr.Sheet.getString(fr.Row,"enumData");
@@ -71,6 +71,6 @@ var loadData = [
 	{"enumData":"01"},
 	{"enumData":"02"},
 	{"enumData":"03"},
- 	{"enumData":""}
+ 	{"enumData":"04"}
 	
 ];
