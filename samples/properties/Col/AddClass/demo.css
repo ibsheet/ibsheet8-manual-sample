@@ -3,12 +3,8 @@
 .myButtonDesign:hover
 {
     background: #93afe5 !important;
-    color: #ffffff;                  
-    border-color: #7096d1;
 }
 
 .myButtonDesign:active {
     background: #ce2180 !important;
-    border: 0px solid #1a364e
 }
-
