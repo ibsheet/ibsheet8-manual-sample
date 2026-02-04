@@ -23,22 +23,29 @@ ib = {
   //중앙(메인) 컬럼 설정
   "Cols": [
     {"Header": "데이터","Type": "Enum","Name": "enumData","Width": 100,Enum:"|대기|진행중|완료|표시안함",EnumKeys:"|01|02|03|04"},
-    {"Header": "버튼","Type": "Button","Name": "btn3","Width": 100, ButtonWidth :"70", AddClassFormula:function(fr) {
-      //enum에 설정한 데이터를 Button 의 Text로 설정한다.
+    {"Header": "버튼","Type": "Button","Name": "btn3","Width": 100, ButtonWidth :"70", 
+    // AddClassFormula: enum 데이터 값에 따라 버튼 텍스트와 디자인 클래스 지정
+    AddClassFormula:function(fr) {
+      // 현재 행의 "btn3" 버튼 텍스트를 enumData 값으로 설정
       fr.Row["btn3"] = fr.Sheet.getString(fr.Row,"enumData");
-      let ButtonDesing = "";
-      if(fr.Row["enumData"] =="01"){
-        ButtonDesing = "myBtn1";
-      }else if(fr.Row["enumData"] =="02"){
-        ButtonDesing = "myBtn2";
-      }else  if(fr.Row["enumData"] =="03"){
-        ButtonDesing = "myBtn3";
-      }else{
-        fr.Row["btn3"] = ""; //값을 빈값으로 설정하면 버튼 표시하지 않음
-        fr.Row["btn3Cursor"] = "default"; //포인터 모양을 바꿈
-        ButtonDesing = "";
-      }
 
+      // 버튼 디자인 클래스를 저장할 변수
+      let ButtonDesing = "";
+
+      // enumData 값에 따라 버튼 CSS 클래스 지정
+      if(fr.Row["enumData"] =="01"){
+        ButtonDesing = "myBtn1"; // enumData : 01 → 버튼1 스타일
+      }else if(fr.Row["enumData"] =="02"){
+        ButtonDesing = "myBtn2";  // enumData : 02 → 버튼2 스타일
+      }else  if(fr.Row["enumData"] =="03"){
+        ButtonDesing = "myBtn3"; //enumData : 03 → 버튼3 스타일
+      }else{
+         // 버튼 표시 안 함
+        fr.Row["btn3"] = ""; //버튼 텍스트 비움 → 버튼 숨김
+        fr.Row["btn3Cursor"] = "default"; // 마우스 포인터 기본으로 변경
+        ButtonDesing = "";  // CSS 클래스 없음
+      }
+      // 반환: 적용할 버튼 디자인 클래스 이름
       return ButtonDesing;
     }},
    
