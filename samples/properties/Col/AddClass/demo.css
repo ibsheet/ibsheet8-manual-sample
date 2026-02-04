@@ -1,10 +1,13 @@
+/* 버튼 기본 스타일 지정: 배경색을 진한 파랑으로 설정*/
 .myButtonDesign {background-color: rgb(12, 46, 97) !important;}
 
+/* 버튼에 마우스를 올렸을 때(Hover)*/
 .myButtonDesign:hover
 {
     background: #93afe5 !important;
 }
 
+/* 버튼 클릭 시*/
 .myButtonDesign:active {
     background: #ce2180 !important;
 }
