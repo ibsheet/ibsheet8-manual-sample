@@ -13,12 +13,8 @@ samplePageObj = {
   Def:{
     Row:{
       CanFormula:1,
-      CalcOrder:"Class",
-      ClassFormula:function(fr){
-        if (fr.Row["sCorp"] == "GS칼텍스") {
-              return "rowAlert";
-          }
-      }
+      CalcOrder:"sCorpClass"
+      
     }
   },
   //틀고정 좌측 컬럼 설정
@@ -27,7 +23,13 @@ samplePageObj = {
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
-    {"Header": ["회사명","회사명"],"Type": "Text","Name": "sCorp","Width": "100","Align": "Center","CanEdit": 1},
+    {"Header": ["회사명","회사명"],"Type": "Text","Name": "sCorp","Width": "100","Align": "Center","CanEdit": 1,
+     ClassFormula:function(fr){
+        if (fr.Row["sCorp"] == "GS칼텍스") {
+              return "rowAlert";
+          }
+      }
+    },
     {"Header": ["사원수","사원수"],"Type": "Int","Name": "sPerson","Width": "80","Align": "Right","CanEdit": 1},
     {"Header": ["금년신입","금년신입"],"Type": "Int","Name": "sNewPerson","Width": "80","Align": "Right","CanEdit": 1},
     {"Header": ["평균연봉","평균연봉"],"Type": "Float","Name": "sPay","Width": "100","Align": "Right","CanEdit": 1},
