@@ -1,3 +1,4 @@
+<!-- ibsheet css -->
 <link rel="stylesheet" href="https://www.ibsheet.com/v8/assets/lib/ibsheet/css/default/main.css"/>
 <!--  ibsheet 필수 js -->
 <script src="https://www.ibsheet.com/v8/assets/lib/iblicense.js"></script>
@@ -10,20 +11,15 @@
 <script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/plugins/ibsheet-excel.js"></script>
 <script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/plugins/jszip.min.js"></script>
 
-<div style='height:500px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>
+<div style='height:calc(100% - 20px)'><div id='sheetDiv' style='width:100%;height:100%'></div></div>
 
 <style>
-/* 버튼 기본 스타일 지정: 배경색을 진한 파랑으로 설정*/
-u.myButtonDesign {background-color: rgb(12, 46, 97)}
-
-/* 버튼에 마우스를 올렸을 때(Hover)*/
-u.myButtonDesign:hover
-{
-    background: #93afe5
+.rowAlert {font-weight:700;animation:blinkingText 1s infinite;}
+@keyframes blinkingText{
+0%{     color: #FF0000;    }
+50%{     color: #FF0000;    }
+80%{    color:transparent;  }
+100%{   color: #FF0000;    }
 }
-
-/* 버튼 클릭 시*/
-u.myButtonDesign:active {
-    background: #ce2180
-}
+.subTitle{color:#EDEDED!important;background-color:#666666!important;}
 </style>
