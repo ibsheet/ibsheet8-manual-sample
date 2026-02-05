@@ -10,26 +10,13 @@ samplePageObj = {
     "HeaderMerge": 3,
     "SelFocusColor": 1
   },
-  Def:{
-    Row:{
-      CanFormula:1,
-      CalcOrder:"sCorpClass"
-      
-    }
-  },
   //틀고정 좌측 컬럼 설정
   "LeftCols": [
     {"Header": ["No","No"],"Type": "Int","Width": 50,"Align": "Center","Name": "SEQ","CanMove": 0,"CanFocus": 0}
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
-    {"Header": ["회사명","회사명"],"Type": "Text","Name": "sCorp","Width": "100","Align": "Center","CanEdit": 1,
-     ClassFormula:function(fr){
-        if (fr.Row["sCorp"] == "GS칼텍스") {
-              return "rowAlert";
-          }
-      }
-    },
+    {"Header": ["회사명","회사명"],"Type": "Text","Name": "sCorp","Width": "100","Align": "Center","CanEdit": 1},
     {"Header": ["사원수","사원수"],"Type": "Int","Name": "sPerson","Width": "80","Align": "Right","CanEdit": 1},
     {"Header": ["금년신입","금년신입"],"Type": "Int","Name": "sNewPerson","Width": "80","Align": "Right","CanEdit": 1},
     {"Header": ["평균연봉","평균연봉"],"Type": "Float","Name": "sPay","Width": "100","Align": "Right","CanEdit": 1},
@@ -45,6 +32,18 @@ samplePageObj = {
       //create 함수는 비동기로 동작하므로 생성 직후 동작은 여기서 진행
       var sheet = evtParam.sheet;
       sheet.loadSearchData(samplePageObj.data);
+    },onDataLoad : function(evtParam) {
+      var sheet = evtParam.sheet; 
+      var dataRows = sheet.getDataRows(); // 전체 데이터 행 추출
+
+      for (var i = 0; i < dataRows.length; i++) {
+          var row = dataRows[i];
+          // sCorp 컬럼 값이 "GS칼텍스"인 경우만 클래스 적용
+          if (row["sCorp"] == "GS칼텍스") {
+              row["sCorpClass"] = "rowAlert";
+          }
+      }
+      //화면에 반영(렌더링)전 이므로 렌더링 관련 함수호출은 생략(refreshRow, rerender 등 )
     }
 },
 //시트객체 생성
