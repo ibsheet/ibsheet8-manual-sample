@@ -19,7 +19,7 @@ ib = {
   //중앙(메인) 컬럼 설정
   "Cols": [
    {"Header": "기본 디자인","Type": "Button","Name": "btn1","Width": 100},
-    {"Header": "변경 디자인","Type": "Button","Name": "btn2","Width": 100,"AddClass":"myButtonDesign","ButtonWidth":"60"},
+  {"Header": "변경 디자인","Type": "Button","Name": "btn2","Width": 100,"AddClass":"myButtonDesign","ButtonWidth":"60"},
    
   ]
 },
