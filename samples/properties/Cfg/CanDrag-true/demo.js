@@ -37,7 +37,7 @@ ib = {
           }
       }
 
-    if (rowsToCheck.length > 1) {
+    if (evtParam.more) {
       // 복수행일때만 드래그 표시용 HTML
       const firstRow = rowsToCheck[0];
       const count = rowsToCheck.length;
@@ -77,7 +77,7 @@ ib = {
 
           var moveRow = rowsToCheck[i];
 
-          // 🔥 여기서 개별 행마다 체크
+          // 여기서 개별 행마다 체크
           if (
             moveRow.sName === "김미경" &&
             evtParam.torow &&
