@@ -7,7 +7,7 @@ ib = {
     "SearchMode": 2,
     "HeaderMerge": 3,
     "MessageWidth": 300,
-    CustomScroll: 0
+    "CustomScroll": 0
   },
   "Def": {
     "Row": {
