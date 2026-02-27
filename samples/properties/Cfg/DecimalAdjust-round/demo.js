@@ -8,7 +8,7 @@ ib = {
     "HeaderMerge": 3,
     "MessageWidth": 300,
     "IgnoreFocused": 1,
-    DecimalAdjust: "round"
+    "DecimalAdjust" : "ceil" // 전역 기본값
   },
   "Def": {
     "Row": {
@@ -21,8 +21,11 @@ ib = {
   ],
   //중앙(메인) 컬럼 설정
   "Cols": [
-    {Header: "원본", Type: "Float", Name: "nFloat", Width: 200},
-    {Header: "근사값(소수점 2째자리까지)", Type: "Float", Name: "nFloat2", Width: 200, Format: "#,##0.00"}
+    {Header: "원본", Type: "Float", Name: "sData", Width: 100}, //기본 소숫점 6자리까지 표시
+    {Header: "정수(올림)", Type: "Int", Name: "sInt", Width: 100 }, // Cfg(ceil) 적용
+    {Header: "실수(내림)", Type: "Float", Name: "nFloat_floor", Width: 100, Format: "#,##0.###",DecimalAdjust: "floor" }, // Col이 Cfg를 덮어씀
+    {Header: "실수(반올림)", Type: "Float", Name: "nFloat_ceil", Width: 100, Format: "#,##0.###",DecimalAdjust: "round" } // Col이 Cfg를 덮어씀
+    
   ]
 },
 //시트 이벤트
@@ -43,12 +46,10 @@ ib = {
     });
 },
 //조회 데이터
-'data':[{"nFloat":"6290.9301","nFloat2":"6290.9301"},{"nFloat":"9345.0219","nFloat2":"9345.0219"},{"nFloat":"8041.7922","nFloat2":"8041.7922"},{"nFloat":"8574.3282","nFloat2":"8574.3282"},{"nFloat":"9884.4996","nFloat2":"9884.4996"},{"nFloat":"9765.0396","nFloat2":"9765.0396"},{"nFloat":"7818.2008","nFloat2":"7818.2008"},{"nFloat":"8879.0066","nFloat2":"8879.0066"}]
+'data':[
+  {"sData":"6290.9381","nFloat_floor":"6290.9381","sInt":"62,90.9381","nFloat_ceil":"6290.9381"},
+  {"sData":"9345.0219","nFloat_floor":"9345.0219","sInt":"9345.0219","nFloat_ceil":"9345.0219"},
+  {"sData":"45.0295","nFloat_floor":"45.0295","sInt":"45.0295","nFloat_ceil":"45.0295","nFloat_ceilDecimalAdjust":"floor"}
+  ]
 }
 ib.create();
-
-document.querySelector("#sel").addEventListener("change", function(evt) {
-  sheet.dispose();
-  ib.init.Cfg.DecimalAdjust = evt.target.value;
-  ib.create();
-})
