@@ -47,7 +47,7 @@ ib = {
 },
 //조회 데이터
 'data':[
-  {"sData":"6290.9381","nFloat_floor":"6290.9381","sInt":"62,90.9381","nFloat_ceil":"6290.9381"},
+  {"sData":"6290.9381","nFloat_floor":"6290.9381","sInt":"6290.9381","nFloat_ceil":"6290.9381"},
   {"sData":"9345.0219","nFloat_floor":"9345.0219","sInt":"9345.0219","nFloat_ceil":"9345.0219"},
   {"sData":"45.0295","nFloat_floor":"45.0295","sInt":"45.0295","nFloat_ceil":"45.0295","nFloat_ceilDecimalAdjust":"floor"}
   ]
