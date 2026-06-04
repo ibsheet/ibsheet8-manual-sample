@@ -130,13 +130,13 @@ var samplePageObj = {
         });
         break;
 
-      case '⑤ 열 합계 숨김':
-        // hideTotalCol: 우측 행 합계 컬럼 숨김
+      case '⑤ 행 합계 숨김':
+        // hideTotalRow: 각 행의 합계 컬럼(우측) 숨김
         sheet.makePivotTable(null, {
           row:  'sDept',
           col:  'sPosition',
           data: 'sSalary'
-        }, '#,###', 'Sum', null, { hideTotalCol: true });
+        }, '#,###', 'Sum', null, { hideTotalRow: true });
         break;
 
       case '원본으로 돌아가기':
