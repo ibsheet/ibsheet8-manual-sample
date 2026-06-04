@@ -75,10 +75,10 @@ var samplePageObj = {
     });
   },
 
-  // 원본 시트로 돌아가기 (피봇 시트 → 원본 시트 전환)
+  // 원본 시트로 돌아가기 (피벗 시트 객체에서 switchPivotSheet(0) 호출)
   'backToOriginal': function () {
-    if (sheet && typeof sheet.switchPivotSheet === 'function') {
-      sheet.switchPivotSheet();
+    if (typeof pivotSheet_sheet !== 'undefined') {
+      pivotSheet_sheet.switchPivotSheet(0);
     }
   },
 
