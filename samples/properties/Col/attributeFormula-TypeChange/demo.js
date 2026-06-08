@@ -7,27 +7,28 @@ ib = {
         // Formula 동작을 위해 CanFormula 필수
         "CanFormula": 1,
         // col attr+Formula의 CalcOrder는 "열이름+속성명" 형식, 항목 사이에 공백 없이
-        "CalcOrder": "ComboDataType",
+        "CalcOrder": "ComboDataType,StatusType",
         "Height": 32
       }
     },
     "Cfg": { "SearchMode": 0 },
     "Cols": [
       {"Header": "순번", "Name": "SEQ", "Type": "Int", "Align": "Center", "Width": 60},
-      {"Header": "회사 (조건)", "Type": "Text", "Name": "TextData", "MinWidth": 120, "CanEdit": 1},
+      {"Header": "회사 (조건)", "Type": "Text", "Name": "TextData", "MinWidth": 110, "CanEdit": 1},
 
       // === 핵심: TypeFormula로 컬럼 Type 동적 변경 + Type별 보조 속성 셋팅 ===
       // Type 변경 시 함께 설정해야 할 속성이 Type마다 다름:
       // - Enum  → Enum, EnumKeys
       // - Float → Format (없으면 Int 기본 Format이 적용돼 소수점 안 보임)
       // - Date  → Format, EditFormat, DataFormat + 데이터를 timestamp로 변환
-      {"Header": "데이터 (Type 동적)", "Type": "Text", "Name": "ComboData", "MinWidth": 200, "CanEdit": 1, "Align": "Center",
+
+      // 출발 Type 1: Text — 회사명에 따라 Enum/Float/Date로 동적 전환
+      {"Header": "데이터 (Text 출발)", "Type": "Text", "Name": "ComboData", "MinWidth": 180, "CanEdit": 1, "Align": "Center",
         TypeFormula: function(fr) {
           var company = fr.Row["TextData"];
 
           if (company == "삼성") {
-            // Text 그대로 유지 — 보조 속성 불필요
-            return "Text";
+            return "Text";  // Text 유지 — 보조 속성 불필요
           }
           else if (company == "Amazon") {
             // Enum 전환 — Enum/EnumKeys 셀 단위 설정
@@ -54,6 +55,19 @@ ib = {
           }
           return "Text";
         }
+      },
+
+      // 출발 Type 2: Bool — 체크박스 상태를 조건에 따라 Text 라벨로 전환
+      // Bool은 보조 속성이 없어 Text 전환 시 부담 적음 (단, 값을 라벨로 바꿔주는 처리는 직접)
+      {"Header": "상태 (Bool 출발)", "Type": "Bool", "Name": "Status", "Width": 130, "CanEdit": 1, "Align": "Center",
+        TypeFormula: function(fr) {
+          // Microsoft 회사만 Bool → Text 전환 + 값을 라벨로 바꿈
+          if (fr.Row["TextData"] == "Microsoft") {
+            fr.Row["Status"] = fr.Row["Status"] ? "활성" : "비활성";
+            return "Text";
+          }
+          // 그 외: Bool 유지 (return 없음)
+        }
       }
     ]
   },
@@ -73,15 +87,17 @@ ib = {
       options: options
     });
   },
-  // 조회 데이터 — TextData(회사명)에 따라 ComboData의 Type이 달라짐
+  // 조회 데이터 — TextData(회사명)에 따라 ComboData/Status의 Type이 달라짐
   'data': [
-    {"TextData": "삼성",   "ComboData": "자유 텍스트"},     // Text
-    {"TextData": "Amazon", "ComboData": "A"},               // Enum
-    {"TextData": "Amazon", "ComboData": "C"},               // Enum
-    {"TextData": "Apple",  "ComboData": 6290.9301},         // Float (Format 필수)
-    {"TextData": "Apple",  "ComboData": 1500.5},            // Float
-    {"TextData": "Google", "ComboData": "20240315"},        // Date (string → timestamp 변환)
-    {"TextData": "Google", "ComboData": "20240601"}         // Date
+    {"TextData": "삼성",      "ComboData": "자유 텍스트",   "Status": 1},  // Text / Bool
+    {"TextData": "Amazon",    "ComboData": "A",           "Status": 1},  // Enum / Bool
+    {"TextData": "Amazon",    "ComboData": "C",           "Status": 0},  // Enum / Bool
+    {"TextData": "Apple",     "ComboData": 6290.9301,     "Status": 1},  // Float / Bool
+    {"TextData": "Apple",     "ComboData": 1500.5,        "Status": 0},  // Float / Bool
+    {"TextData": "Google",    "ComboData": "20240315",    "Status": 1},  // Date / Bool
+    {"TextData": "Google",    "ComboData": "20240601",    "Status": 0},  // Date / Bool
+    {"TextData": "Microsoft", "ComboData": "자유 텍스트2", "Status": 1},  // Text / Text "활성"
+    {"TextData": "Microsoft", "ComboData": "자유 텍스트3", "Status": 0}   // Text / Text "비활성"
   ]
 };
 ib.create();

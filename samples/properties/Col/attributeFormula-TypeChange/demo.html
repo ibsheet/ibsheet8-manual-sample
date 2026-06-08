@@ -6,4 +6,22 @@
 <script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/ibsheet.js"></script>
 <script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/locale/ko.js"></script>
 
-<div style='height:400px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>
+<div class="demo-info">
+  <strong>TypeFormula 데모 — 컬럼 Type 동적 변경 + Type별 보조 속성 셋팅</strong>
+  <p>TextData(회사명) 값에 따라 두 컬럼의 Type이 동적으로 결정됩니다.</p>
+  <p><strong>① ComboData (Text 출발)</strong></p>
+  <ul>
+    <li><strong>삼성</strong> → <code>Text</code> (보조 속성 불필요)</li>
+    <li><strong>Amazon</strong> → <code>Enum</code> (셀별 Enum/EnumKeys 셋팅)</li>
+    <li><strong>Apple</strong> → <code>Float</code> (Format 셋팅으로 소수점 표시)</li>
+    <li><strong>Google</strong> → <code>Date</code> (Format 3종 + 데이터 timestamp 변환)</li>
+  </ul>
+  <p><strong>② Status (Bool 출발)</strong></p>
+  <ul>
+    <li>대부분 회사: <code>Bool</code> 유지 (체크박스 그대로)</li>
+    <li><strong>Microsoft</strong>: <code>Text</code> 전환 → 값을 "활성"/"비활성" 라벨로 변환</li>
+  </ul>
+  <em>핵심 패턴: <code>fr.Row[컬럼명 + 속성명] = 값</code> 형식으로 셀 단위 attr 동적 셋팅 + 필요 시 데이터 값 자체도 변환.</em>
+</div>
+
+<div style='height:450px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>
