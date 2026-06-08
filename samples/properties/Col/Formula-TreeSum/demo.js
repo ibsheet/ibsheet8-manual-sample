@@ -7,7 +7,7 @@ ib = {
         // Formula 동작을 위해 CanFormula 필수
         "CanFormula": 1,
         // Formula 적용 컬럼 계산 순서 (띄어쓰기 없이 ',' 로 연결)
-        "CalcOrder": "Sales,SalesAvg,TeamCount,ScoreMax,ScoreMin,ActiveSales,ScoreAvg,Revenue"
+        "CalcOrder": "Sales,SalesAvg,Headcount,TeamCount,ScoreMax,ActiveSales,ScoreAvg,Revenue"
       }
     },
     "Cfg": {
@@ -24,9 +24,9 @@ ib = {
       // IB_Preset 트리 프리셋 사용 (ibsheet-common.js 필요)
       {"Header": "매출", "Type": "Int", "Name": "Sales", "Width": 90, "Align": "Right", "CanEdit": 1, "Format": "#,##0", "Formula": IB_Preset.TreeSumFormula},
       {"Header": "평균매출", "Type": "Int", "Name": "SalesAvg", "Width": 90, "Align": "Right", "CanEdit": 1, "Format": "#,##0", "Formula": IB_Preset.TreeAvgFormula},
+      {"Header": "팀원", "Type": "Int", "Name": "Headcount", "Width": 70, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeSumFormula},
       {"Header": "팀수", "Type": "Int", "Name": "TeamCount", "Width": 70, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeCountFormula},
       {"Header": "최고점수", "Type": "Int", "Name": "ScoreMax", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeMaxFormula},
-      {"Header": "최저점수", "Type": "Int", "Name": "ScoreMin", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeMinFormula},
 
       // 커스텀 트리 Formula
       {"Header": "활성매출(삭제제외)", "Type": "Int", "Name": "ActiveSales", "Width": 140, "Align": "Right", "CanEdit": 1, "Format": "#,##0", "Formula": TreeSumExFormula},
@@ -53,16 +53,16 @@ ib = {
   // 조회 데이터 — 부서별 실적 트리
   // 각 leaf(팀)의 같은 값이 여러 집계 컬럼에 들어가는 이유: 컬럼마다 다른 집계 방식을 같은 데이터에 시연하기 위함
   'data': [
-    {"Tree": "회사", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0, "ScoreMin": 0, "ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
-      {"Tree": "영업본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0, "ScoreMin": 0, "ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
-        {"Tree": "영업1팀", "Sales": 1200, "SalesAvg": 1200, "TeamCount": 1, "ScoreMax": 85, "ScoreMin": 85, "ActiveSales": 1200, "ScoreAvg": 85, "Headcount": 5},
-        {"Tree": "영업2팀", "Sales": 800,  "SalesAvg": 800,  "TeamCount": 1, "ScoreMax": 78, "ScoreMin": 78, "ActiveSales": 800,  "ScoreAvg": 78, "Headcount": 4},
-        {"Tree": "영업3팀", "Sales": 1500, "SalesAvg": 1500, "TeamCount": 1, "ScoreMax": 90, "ScoreMin": 90, "ActiveSales": 1500, "ScoreAvg": 90, "Headcount": 6}
+    {"Tree": "회사", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+      {"Tree": "영업본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+        {"Tree": "영업1팀", "Sales": 1200, "SalesAvg": 1200, "TeamCount": 1, "ScoreMax": 85,"ActiveSales": 1200, "ScoreAvg": 85, "Headcount": 5},
+        {"Tree": "영업2팀", "Sales": 800,  "SalesAvg": 800,  "TeamCount": 1, "ScoreMax": 78,"ActiveSales": 800,  "ScoreAvg": 78, "Headcount": 4},
+        {"Tree": "영업3팀", "Sales": 1500, "SalesAvg": 1500, "TeamCount": 1, "ScoreMax": 90,"ActiveSales": 1500, "ScoreAvg": 90, "Headcount": 6}
       ]},
-      {"Tree": "개발본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0, "ScoreMin": 0, "ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
-        {"Tree": "백엔드팀", "Sales": 600, "SalesAvg": 600, "TeamCount": 1, "ScoreMax": 88, "ScoreMin": 88, "ActiveSales": 600, "ScoreAvg": 88,   "Headcount": 8},
-        {"Tree": "프론트팀", "Sales": 400, "SalesAvg": 400, "TeamCount": 1, "ScoreMax": 82, "ScoreMin": 82, "ActiveSales": 400, "ScoreAvg": 82,   "Headcount": 6},
-        {"Tree": "DevOps팀", "Sales": 200, "SalesAvg": 200, "TeamCount": 1, "ScoreMax": 75, "ScoreMin": 75, "ActiveSales": 200, "ScoreAvg": null, "Headcount": 3}
+      {"Tree": "개발본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+        {"Tree": "백엔드팀", "Sales": 600, "SalesAvg": 600, "TeamCount": 1, "ScoreMax": 88,"ActiveSales": 600, "ScoreAvg": 88,   "Headcount": 8},
+        {"Tree": "프론트팀", "Sales": 400, "SalesAvg": 400, "TeamCount": 1, "ScoreMax": 82,"ActiveSales": 400, "ScoreAvg": 82,   "Headcount": 6},
+        {"Tree": "DevOps팀", "Sales": 200, "SalesAvg": 200, "TeamCount": 1, "ScoreMax": 75,"ActiveSales": 200, "ScoreAvg": null, "Headcount": 3}
       ]}
     ]}
   ]
