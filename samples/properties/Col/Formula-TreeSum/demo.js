@@ -81,7 +81,8 @@ function TotalFormula(fr) {
     }
     return sum;
   } else {
-    // leaf 행: 본인 (Sales * Headcount), 편집 허용
+    // leaf 행: 본인 (Sales * Headcount)
+    // Formula 컬럼은 자동 편집 불가 상태가 되지만 leaf 행은 사용자가 직접 값을 입력해야 하므로 편집 허용
     fr.Row[fr.Col + "CanEdit"] = 1;
     return fr.Row.Sales * fr.Row.Headcount;
   }
@@ -96,6 +97,7 @@ function TreeSumExFormula(fr) {
     }
     return sum;
   } else {
+    // Formula 컬럼은 자동 편집 불가 상태가 되지만 leaf 행은 사용자가 직접 값을 입력해야 하므로 편집 허용
     fr.Row[fr.Col + "CanEdit"] = 1;
     return fr.Row[fr.Col];
   }
@@ -113,6 +115,7 @@ function TreeExceptNullFormula(fr) {
     }
     return count ? (sum / count) : 0;
   } else {
+    // Formula 컬럼은 자동 편집 불가 상태가 되지만 leaf 행은 사용자가 직접 값을 입력해야 하므로 편집 허용
     fr.Row[fr.Col + "CanEdit"] = 1;
     return fr.Row[fr.Col];
   }
