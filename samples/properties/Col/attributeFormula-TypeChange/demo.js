@@ -89,15 +89,13 @@ ib = {
   },
   // 조회 데이터 — TextData(회사명)에 따라 ComboData/Status의 Type이 달라짐
   'data': [
-    {"TextData": "삼성",      "ComboData": "자유 텍스트",   "Status": 1},  // Text / Bool
-    {"TextData": "Amazon",    "ComboData": "A",           "Status": 1},  // Enum / Bool
-    {"TextData": "Amazon",    "ComboData": "C",           "Status": 0},  // Enum / Bool
-    {"TextData": "Apple",     "ComboData": 6290.9301,     "Status": 1},  // Float / Bool
-    {"TextData": "Apple",     "ComboData": 1500.5,        "Status": 0},  // Float / Bool
-    {"TextData": "Google",    "ComboData": "20240315",    "Status": 1},  // Date / Bool
-    {"TextData": "Google",    "ComboData": "20240601",    "Status": 0},  // Date / Bool
-    {"TextData": "Microsoft", "ComboData": "자유 텍스트2", "Status": 1},  // Text / Text "활성"
-    {"TextData": "Microsoft", "ComboData": "자유 텍스트3", "Status": 0}   // Text / Text "비활성"
+    {"TextData": "삼성",      "ComboData": "자유 텍스트", "Status": 1},  // Text / Bool
+    {"TextData": "Amazon",    "ComboData": "A",         "Status": 1},  // Enum / Bool
+    {"TextData": "Apple",     "ComboData": 6290.9301,   "Status": 0},  // Float (소수점 있음) / Bool
+    {"TextData": "Apple",     "ComboData": 1500,        "Status": 1},  // Float (소수점 없음) / Bool
+    {"TextData": "Google",    "ComboData": "20240315",  "Status": 1},  // Date / Bool
+    {"TextData": "Microsoft", "ComboData": "자유 텍스트", "Status": 1},  // Text / Text "활성"
+    {"TextData": "Microsoft", "ComboData": "자유 텍스트", "Status": 0}   // Text / Text "비활성"
   ]
 };
 ib.create();
