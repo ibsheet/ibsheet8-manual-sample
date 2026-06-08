@@ -7,7 +7,7 @@ ib = {
         // Formula 동작을 위해 CanFormula 필수
         "CanFormula": 1,
         // Formula 적용 컬럼 계산 순서 (띄어쓰기 없이 ',' 로 연결)
-        "CalcOrder": "TreeSumCols,TreeAvgCols,TreeCountCols,TreeMaxCols,TreeMinCols,TreeSumEx,TreeExceptNull,Total"
+        "CalcOrder": "Sales,SalesAvg,TeamCount,ScoreMax,ScoreMin,ActiveSales,ScoreAvg,Revenue"
       }
     },
     "Cfg": {
@@ -15,23 +15,23 @@ ib = {
       "MainCol": "Tree"
     },
     "LeftCols": [
-      {"Type": "Int", "Width": 60, "Align": "Center", "Name": "SEQ"},
+      {"Type": "Int", "Width": 50, "Align": "Center", "Name": "SEQ"},
       {"Header": "삭제", "Name": "DELCHK", "Extend": IB_Preset.DelCheck}
     ],
     "Cols": [
-      {"Header": "트리", "Type": "Text", "Name": "Tree", "MinWidth": 100, "Align": "Left", "CanEdit": 1},
+      {"Header": "조직", "Type": "Text", "Name": "Tree", "MinWidth": 140, "Align": "Left", "CanEdit": 1},
 
       // IB_Preset 트리 프리셋 사용 (ibsheet-common.js 필요)
-      {"Header": "합계", "Type": "Int", "Name": "TreeSumCols", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeSumFormula},
-      {"Header": "평균", "Type": "Int", "Name": "TreeAvgCols", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeAvgFormula},
-      {"Header": "갯수", "Type": "Int", "Name": "TreeCountCols", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeCountFormula},
-      {"Header": "최대값", "Type": "Int", "Name": "TreeMaxCols", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeMaxFormula},
-      {"Header": "최소값", "Type": "Int", "Name": "TreeMinCols", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeMinFormula},
+      {"Header": "매출", "Type": "Int", "Name": "Sales", "Width": 90, "Align": "Right", "CanEdit": 1, "Format": "#,##0", "Formula": IB_Preset.TreeSumFormula},
+      {"Header": "평균매출", "Type": "Int", "Name": "SalesAvg", "Width": 90, "Align": "Right", "CanEdit": 1, "Format": "#,##0", "Formula": IB_Preset.TreeAvgFormula},
+      {"Header": "팀수", "Type": "Int", "Name": "TeamCount", "Width": 70, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeCountFormula},
+      {"Header": "최고점수", "Type": "Int", "Name": "ScoreMax", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeMaxFormula},
+      {"Header": "최저점수", "Type": "Int", "Name": "ScoreMin", "Width": 80, "Align": "Right", "CanEdit": 1, "Formula": IB_Preset.TreeMinFormula},
 
       // 커스텀 트리 Formula
-      {"Header": "합계(삭제제외)", "Type": "Int", "Name": "TreeSumEx", "Width": 120, "Align": "Right", "CanEdit": 1, "Formula": TreeSumExFormula},
-      {"Header": "평균(Null제외)", "Type": "Int", "Name": "TreeExceptNull", "Width": 120, "Align": "Right", "CanEdit": 1, "Formula": TreeExceptNullFormula, "Format": "#,###"},
-      {"Header": "합계×갯수", "Type": "Int", "Name": "Total", "Width": 120, "Align": "Right", "CanEdit": 1, "Formula": TotalFormula}
+      {"Header": "활성매출(삭제제외)", "Type": "Int", "Name": "ActiveSales", "Width": 140, "Align": "Right", "CanEdit": 1, "Format": "#,##0", "Formula": TreeSumExFormula},
+      {"Header": "평균점수(null제외)", "Type": "Int", "Name": "ScoreAvg", "Width": 140, "Align": "Right", "CanEdit": 1, "Format": "#,###", "Formula": TreeExceptNullFormula},
+      {"Header": "매출×인원", "Type": "Int", "Name": "Revenue", "Width": 110, "Align": "Right", "CanEdit": 1, "Format": "#,##0", "Formula": TotalFormula}
     ]
   },
   // 시트 이벤트
@@ -50,19 +50,19 @@ ib = {
       options: options
     });
   },
-  // 조회 데이터 (트리 구조)
+  // 조회 데이터 — 부서별 실적 트리
+  // 각 leaf(팀)의 같은 값이 여러 집계 컬럼에 들어가는 이유: 컬럼마다 다른 집계 방식을 같은 데이터에 시연하기 위함
   'data': [
-    {"Tree": "레벨0", "TreeSumCols": 1, "TreeAvgCols": 1, "TreeCountCols": 1, "TreeMaxCols": 1, "TreeMinCols": 1, "TreeSumEx": 1, "TreeExceptNull": 1, "Items": [
-      {"Tree": "레벨1", "TreeSumCols": 2, "TreeAvgCols": 2, "TreeCountCols": 2, "TreeMaxCols": 2, "TreeMinCols": 2, "TreeSumEx": 2, "TreeExceptNull": 2, "Items": [
-        {"Tree": "레벨1-1", "TreeSumCols": 1, "TreeAvgCols": 1, "TreeCountCols": 1, "TreeMaxCols": 1, "TreeMinCols": 1, "TreeSumEx": 1, "TreeExceptNull": 1},
-        {"Tree": "레벨1-2", "TreeSumCols": 2, "TreeAvgCols": 2, "TreeCountCols": 2, "TreeMaxCols": 2, "TreeMinCols": 2, "TreeSumEx": 2, "TreeExceptNull": 2},
-        {"Tree": "레벨1-3", "TreeSumCols": 3, "TreeAvgCols": 3, "TreeCountCols": 3, "TreeMaxCols": 3, "TreeMinCols": 3, "TreeSumEx": 3, "TreeExceptNull": 3}
+    {"Tree": "회사", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0, "ScoreMin": 0, "ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+      {"Tree": "영업본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0, "ScoreMin": 0, "ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+        {"Tree": "영업1팀", "Sales": 1200, "SalesAvg": 1200, "TeamCount": 1, "ScoreMax": 85, "ScoreMin": 85, "ActiveSales": 1200, "ScoreAvg": 85, "Headcount": 5},
+        {"Tree": "영업2팀", "Sales": 800,  "SalesAvg": 800,  "TeamCount": 1, "ScoreMax": 78, "ScoreMin": 78, "ActiveSales": 800,  "ScoreAvg": 78, "Headcount": 4},
+        {"Tree": "영업3팀", "Sales": 1500, "SalesAvg": 1500, "TeamCount": 1, "ScoreMax": 90, "ScoreMin": 90, "ActiveSales": 1500, "ScoreAvg": 90, "Headcount": 6}
       ]},
-      {"Tree": "레벨2", "TreeSumCols": 2, "TreeAvgCols": 2, "TreeCountCols": 2, "TreeMaxCols": 2, "TreeMinCols": 2, "TreeSumEx": 2, "TreeExceptNull": 2, "Items": [
-        {"Tree": "레벨2-1", "TreeSumCols": 1, "TreeAvgCols": 1, "TreeCountCols": 1, "TreeMaxCols": 1, "TreeMinCols": 1, "TreeSumEx": 1, "TreeExceptNull": null},
-        {"Tree": "레벨2-2", "TreeSumCols": 2, "TreeAvgCols": 2, "TreeCountCols": 2, "TreeMaxCols": 2, "TreeMinCols": 2, "TreeSumEx": 2, "TreeExceptNull": 2},
-        {"Tree": "레벨2-3", "TreeSumCols": 3, "TreeAvgCols": null, "TreeCountCols": 3, "TreeMaxCols": 3, "TreeMinCols": 3, "TreeSumEx": 3, "TreeExceptNull": null},
-        {"Tree": "레벨2-4", "TreeSumCols": 4, "TreeAvgCols": 4, "TreeCountCols": 4, "TreeMaxCols": 4, "TreeMinCols": 4, "TreeSumEx": 4, "TreeExceptNull": 4}
+      {"Tree": "개발본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0, "ScoreMin": 0, "ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+        {"Tree": "백엔드팀", "Sales": 600, "SalesAvg": 600, "TeamCount": 1, "ScoreMax": 88, "ScoreMin": 88, "ActiveSales": 600, "ScoreAvg": 88,   "Headcount": 8},
+        {"Tree": "프론트팀", "Sales": 400, "SalesAvg": 400, "TeamCount": 1, "ScoreMax": 82, "ScoreMin": 82, "ActiveSales": 400, "ScoreAvg": 82,   "Headcount": 6},
+        {"Tree": "DevOps팀", "Sales": 200, "SalesAvg": 200, "TeamCount": 1, "ScoreMax": 75, "ScoreMin": 75, "ActiveSales": 200, "ScoreAvg": null, "Headcount": 3}
       ]}
     ]}
   ]
@@ -71,28 +71,28 @@ ib.create();
 
 // === 커스텀 트리 Formula 함수들 ===
 
-// 합계×갯수 — 자식별 (합계*갯수)의 합
+// 매출×인원 — 자식별 (매출 × 인원)의 합계
 function TotalFormula(fr) {
   if (fr.Row.childNodes.length) {
-    // 부모 행: 직계 자식의 (TreeSumCols * TreeCountCols) 합
+    // 부모 행: 직계 자식의 (Sales * Headcount) 합
     var sum = 0;
     for (var r = fr.Row.firstChild; r; r = r.nextSibling) {
-      sum += (r["TreeSumCols"] * r["TreeCountCols"]);
+      sum += (r["Sales"] * r["Headcount"]);
     }
     return sum;
   } else {
-    // leaf 행: 본인 (TreeSumCols * TreeCountCols), 편집 허용
+    // leaf 행: 본인 (Sales * Headcount), 편집 허용
     fr.Row[fr.Col + "CanEdit"] = 1;
-    return fr.Row.TreeSumCols * fr.Row.TreeCountCols;
+    return fr.Row.Sales * fr.Row.Headcount;
   }
 }
 
-// 삭제행 제외 합계
+// 삭제행 제외 합계 — 삭제 체크된 자식은 합산에서 제외
 function TreeSumExFormula(fr) {
   if (fr.Row.childNodes.length) {
     var sum = 0;
     for (var r = fr.Row.firstChild; r; r = r.nextSibling) {
-      if (!r.Deleted) sum += r[fr.Col];  // 삭제 행 제외
+      if (!r.Deleted) sum += r[fr.Col];
     }
     return sum;
   } else {
@@ -101,7 +101,7 @@ function TreeSumExFormula(fr) {
   }
 }
 
-// null 제외 평균
+// null 제외 평균 — null 값은 평균 계산에서 제외 (DevOps팀 점수가 null인 케이스)
 function TreeExceptNullFormula(fr) {
   if (fr.Row.childNodes.length) {
     var sum = 0, count = 0;
