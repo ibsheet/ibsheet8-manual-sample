@@ -19,21 +19,20 @@ ib = {
         "Width": 100, "CanEdit": 1, "Align": "Center"},
 
       // 금액 — Text 출발, 통화에 따라 Int(원화) 또는 Float(달러)로 동적 전환
-      // 원화 → Int + Format "#,##0" (정수, 소수점 없음)
-      // 달러 → Float + Format "#,##0.##" (소수점 표시)
+      // 원화 → Int + Format "₩#,##0"        (정수 + 원 기호)
+      // 달러 → Float + Format "$#,##0.00"   (소수점 2자리 고정 + 달러 기호)
       {"Header": "금액", "Type": "Text", "Name": "Amount", "Width": 180, "CanEdit": 1, "Align": "Right",
         TypeFormula: function(fr) {
           var currency = fr.Row["Currency"];
 
           if (currency == "KRW") {
-            fr.Row["AmountFormat"] = "#,##0";   // 정수 표시
+            fr.Row["AmountFormat"] = "₩ #,##0";
             return "Int";
           }
           if (currency == "USD") {
-            fr.Row["AmountFormat"] = "#,##0.##"; // 소수점 표시
+            fr.Row["AmountFormat"] = "$ #,##0.00";
             return "Float";
           }
-          return "Text"; // 통화 미선택: Text 유지
         }
       }
     ]
