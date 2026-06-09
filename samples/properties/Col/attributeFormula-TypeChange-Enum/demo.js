@@ -29,18 +29,23 @@ ib = {
           var item = fr.Row["Item"];
 
           if (item == "COL") {
-            // 색맹 → Enum 옵션
-            fr.Row["ResultEnum"]     = "|정상|적록색맹|청황색맹";
-            fr.Row["ResultEnumKeys"] = "|N|RG|BY";
+            // 색맹 → Enum 옵션 (Type/옵션/값 정합성을 함수 안에서 함께 처리)
+            fr.Row[fr.Col + "Enum"]     = "|정상|적록색맹|청황색맹";
+            fr.Row[fr.Col + "EnumKeys"] = "|N|RG|BY";
             return "Enum";
           }
           if (item == "HEAR") {
             // 청력 → Enum 옵션
-            fr.Row["ResultEnum"]     = "|정상|경도난청|중도난청";
-            fr.Row["ResultEnumKeys"] = "|N|MILD|MOD";
+            fr.Row[fr.Col + "Enum"]     = "|정상|경도난청|중도난청";
+            fr.Row[fr.Col + "EnumKeys"] = "|N|MILD|MOD";
             return "Enum";
           }
-          // 시력: Text 유지 (자유 입력)
+          // 시력(VIS): Text 자유 입력
+          // 이전 enum 키 값("N", "RG" 등)이 남아있으면 의미 없으므로 빈 값으로 초기화
+          var enumKeys = "N|RG|BY|MILD|MOD".split("|");
+          if (enumKeys.indexOf(String(fr.Row[fr.Col])) >= 0) {
+            fr.Row[fr.Col] = "";
+          }
           return "Text";
         }
       }
@@ -49,12 +54,6 @@ ib = {
   'event': {
     onRenderFirstFinish: function(evt) {
       evt.sheet.loadSearchData(ib.data);
-    },
-    // 검사 항목을 시력(자유 입력 Text)으로 변경하면 이전 enum 결과값이 무의미하므로 초기화
-    onAfterChange: function(evt) {
-      if (evt.col === "Item" && evt.val === "VIS") {
-        evt.sheet.setValue(evt.row, "Result", "", 0);
-      }
     }
   },
   'create': function() {
