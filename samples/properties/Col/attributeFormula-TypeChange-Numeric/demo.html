@@ -7,13 +7,13 @@
 <script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/locale/ko.js"></script>
 
 <div class="demo-info">
-  <strong>TypeFormula — 숫자 Type 동적 전환 (Text/Int → Float)</strong>
-  <p>Trigger 컬럼이 <code>convert</code>일 때, 두 컬럼이 Float로 전환됩니다.</p>
+  <strong>TypeFormula — 통화별 금액 Type 동적 전환</strong>
+  <p>"통화" 컬럼의 값에 따라 "금액" 컬럼의 Type과 Format이 행별로 결정됩니다.</p>
   <ul>
-    <li><strong>TextToFloat</strong>: Text 출발 → Float (Format 셋팅으로 소수점 표시)</li>
-    <li><strong>IntToFloat</strong>: Int 출발 → Float (Format을 Int용에서 Float용으로 교체)</li>
+    <li><strong>원화 (KRW)</strong> → <code>Int</code> + Format <code>"#,##0"</code> (정수만 표시)</li>
+    <li><strong>달러 (USD)</strong> → <code>Float</code> + Format <code>"#,##0.##"</code> (소수점 가능)</li>
   </ul>
-  <em>핵심: Float 전환 시 Format을 명시적으로 셋팅하지 않으면 출발 Type의 기본 Format이 적용돼 소수점이 잘리거나 표시가 깨질 수 있음.</em>
+  <em>실전 시나리오: 글로벌 거래 명세서 — 행마다 통화가 다르고, 통화에 따라 금액 표시 형식이 다름. 통화 셀을 변경하면 같은 행의 금액 Type/Format이 자동 재계산됩니다.</em>
 </div>
 
 <div style='height:350px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>
