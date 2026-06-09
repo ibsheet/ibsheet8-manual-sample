@@ -1,0 +1,19 @@
+<!-- ibsheet css -->
+<link rel="stylesheet" href="https://www.ibsheet.com/v8/assets/lib/ibsheet/css/default/main.css"/>
+
+<!--  ibsheet 필수 js -->
+<script src="https://www.ibsheet.com/v8/assets/lib/iblicense.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/ibsheet.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/locale/ko.js"></script>
+
+<div class="demo-info">
+  <strong>TypeFormula — Bool 출발 → Text 전환 + 값 라벨 변환</strong>
+  <p>Trigger 컬럼 값에 따라 Status 컬럼이 Bool 체크박스 또는 Text 라벨로 동적 결정됩니다.</p>
+  <ul>
+    <li><strong>Trigger = <code>checkbox</code></strong>: Bool 유지 → 체크박스 표시</li>
+    <li><strong>Trigger = <code>label</code></strong>: Text 전환 → 값 1/0을 "활성"/"비활성" 라벨로 변환</li>
+  </ul>
+  <em>Bool은 보조 속성이 없어 Text 전환 시 Format 셋팅 등 추가 처리 불필요. 다만 값 자체를 표시용 라벨로 바꿔주는 처리는 직접 해야 함.</em>
+</div>
+
+<div style='height:300px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>

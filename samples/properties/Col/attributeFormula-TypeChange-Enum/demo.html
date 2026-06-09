@@ -1,0 +1,20 @@
+<!-- ibsheet css -->
+<link rel="stylesheet" href="https://www.ibsheet.com/v8/assets/lib/ibsheet/css/default/main.css"/>
+
+<!--  ibsheet 필수 js -->
+<script src="https://www.ibsheet.com/v8/assets/lib/iblicense.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/ibsheet.js"></script>
+<script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/locale/ko.js"></script>
+
+<div class="demo-info">
+  <strong>TypeFormula — Text → Enum 동적 전환</strong>
+  <p>회사명에 따라 ComboData 컬럼이 Text 또는 서로 다른 Enum 셋트로 동적 결정됩니다.</p>
+  <ul>
+    <li><strong>삼성</strong> → <code>Text</code> (자유 입력)</li>
+    <li><strong>Amazon</strong> → <code>Enum</code> A~D 키 셋트 (셀별 Enum/EnumKeys 셋팅)</li>
+    <li><strong>Alphabet</strong> → <code>Enum</code> 01~04 키 셋트 (다른 Enum/EnumKeys)</li>
+  </ul>
+  <em>핵심: <code>fr.Row[컬럼명 + "Enum"]</code>·<code>fr.Row[컬럼명 + "EnumKeys"]</code>로 셀 단위 Enum/EnumKeys 동적 셋팅.</em>
+</div>
+
+<div style='height:350px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>
