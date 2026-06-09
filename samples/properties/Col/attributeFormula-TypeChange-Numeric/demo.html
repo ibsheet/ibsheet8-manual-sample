@@ -10,8 +10,8 @@
   <strong>TypeFormula — 통화별 금액 Type 동적 전환</strong>
   <p>"통화" 컬럼의 값에 따라 "금액" 컬럼의 Type과 Format이 행별로 결정됩니다.</p>
   <ul>
-    <li><strong>원화 (KRW)</strong> → <code>Int</code> + Format <code>"₩#,##0"</code> (정수, 원 기호)</li>
-    <li><strong>달러 (USD)</strong> → <code>Float</code> + Format <code>"$#,##0.00"</code> (소수점 2자리 고정, 달러 기호)</li>
+    <li><strong>원화 (KRW)</strong> → <code>Int</code> + Format <code>"₩ #,##0"</code> (정수, 원 기호)</li>
+    <li><strong>달러 (USD)</strong> → <code>Float</code> + Format <code>"$ #,##0.00"</code> (소수점 2자리 고정, 달러 기호)</li>
   </ul>
   <em>실전 시나리오: 글로벌 거래 명세서 — 행마다 통화가 다르고, 통화에 따라 금액 표시 형식이 다름. 통화 셀을 변경하면 같은 행의 금액 Type/Format이 자동 재계산됩니다.</em>
 </div>
