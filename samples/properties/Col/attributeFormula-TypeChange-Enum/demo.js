@@ -49,6 +49,12 @@ ib = {
   'event': {
     onRenderFirstFinish: function(evt) {
       evt.sheet.loadSearchData(ib.data);
+    },
+    // 검사 항목을 시력(자유 입력 Text)으로 변경하면 이전 enum 결과값이 무의미하므로 초기화
+    onAfterChange: function(evt) {
+      if (evt.col === "Item" && evt.val === "VIS") {
+        evt.sheet.setValue(evt.row, "Result", "", 0);
+      }
     }
   },
   'create': function() {
