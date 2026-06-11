@@ -9,4 +9,13 @@
 <!--  ibsheet 선택/추가 js (IB_Preset 트리 프리셋 사용을 위해 common 플러그인 필요) -->
 <script src="https://www.ibsheet.com/v8/assets/lib/ibsheet/plugins/ibsheet-common.js"></script>
 
+<div class="demo-info">
+  <strong>Formula — Tree 구조 집계 (부서별 실적)</strong>
+  <p>트리 시트에서 부모 행 값을 자식 행 값으로 자동 집계합니다. leaf 행은 사용자 입력, 부모 행은 Formula로 자동 계산.</p>
+  <ul>
+    <li><strong>IB_Preset</strong>: <code>TreeSumFormula</code>, <code>TreeAvgFormula</code>, <code>TreeCountFormula</code>, <code>TreeMaxFormula</code> (ibsheet-common.js 제공)</li>
+    <li><strong>커스텀 Formula</strong>: 삭제행 제외 합계, null 제외 평균, 매출×인원 곱셈 합계 — Row 객체 속성(<code>childNodes</code>, <code>firstChild</code>, <code>nextSibling</code>, <code>Deleted</code>) 활용</li>
+  </ul>
+</div>
+
 <div style='height:500px'><div id='sheetDiv' style='width:100%;height:100%'></div></div>

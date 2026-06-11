@@ -12,14 +12,14 @@ ib = {
     },
     "Cfg": {
       "SearchMode": 0,
-      "MainCol": "Tree"
+      "MainCol": "Department"
     },
     "LeftCols": [
       {"Type": "Int", "Width": 50, "Align": "Center", "Name": "SEQ"},
       {"Header": "삭제", "Name": "DELCHK", "Extend": IB_Preset.DelCheck}
     ],
     "Cols": [
-      {"Header": "조직", "Type": "Text", "Name": "Tree", "MinWidth": 140, "Align": "Left", "CanEdit": 1},
+      {"Header": "조직", "Type": "Text", "Name": "Department", "MinWidth": 140, "Align": "Left", "CanEdit": 1},
 
       // IB_Preset 트리 프리셋 사용 (ibsheet-common.js 필요)
       {"Header": "매출", "Type": "Int", "Name": "Sales", "Width": 90, "Align": "Right", "CanEdit": 1, "Format": "#,##0", "Formula": IB_Preset.TreeSumFormula},
@@ -53,16 +53,16 @@ ib = {
   // 조회 데이터 — 부서별 실적 트리
   // 각 leaf(팀)의 같은 값이 여러 집계 컬럼에 들어가는 이유: 컬럼마다 다른 집계 방식을 같은 데이터에 시연하기 위함
   'data': [
-    {"Tree": "회사", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
-      {"Tree": "영업본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
-        {"Tree": "영업1팀", "Sales": 1200, "SalesAvg": 1200, "TeamCount": 1, "ScoreMax": 85,"ActiveSales": 1200, "ScoreAvg": 85, "Headcount": 5},
-        {"Tree": "영업2팀", "Sales": 800,  "SalesAvg": 800,  "TeamCount": 1, "ScoreMax": 78,"ActiveSales": 800,  "ScoreAvg": 78, "Headcount": 4},
-        {"Tree": "영업3팀", "Sales": 1500, "SalesAvg": 1500, "TeamCount": 1, "ScoreMax": 90,"ActiveSales": 1500, "ScoreAvg": 90, "Headcount": 6}
+    {"Department": "회사", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+      {"Department": "영업본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+        {"Department": "영업1팀", "Sales": 1200, "SalesAvg": 1200, "TeamCount": 1, "ScoreMax": 85,"ActiveSales": 1200, "ScoreAvg": 85, "Headcount": 5},
+        {"Department": "영업2팀", "Sales": 800,  "SalesAvg": 800,  "TeamCount": 1, "ScoreMax": 78,"ActiveSales": 800,  "ScoreAvg": 78, "Headcount": 4},
+        {"Department": "영업3팀", "Sales": 1500, "SalesAvg": 1500, "TeamCount": 1, "ScoreMax": 90,"ActiveSales": 1500, "ScoreAvg": 90, "Headcount": 6}
       ]},
-      {"Tree": "개발본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
-        {"Tree": "백엔드팀", "Sales": 600, "SalesAvg": 600, "TeamCount": 1, "ScoreMax": 88,"ActiveSales": 600, "ScoreAvg": 88,   "Headcount": 8},
-        {"Tree": "프론트팀", "Sales": 400, "SalesAvg": 400, "TeamCount": 1, "ScoreMax": 82,"ActiveSales": 400, "ScoreAvg": 82,   "Headcount": 6},
-        {"Tree": "DevOps팀", "Sales": 200, "SalesAvg": 200, "TeamCount": 1, "ScoreMax": 75,"ActiveSales": 200, "ScoreAvg": null, "Headcount": 3}
+      {"Department": "개발본부", "Sales": 0, "SalesAvg": 0, "TeamCount": 0, "ScoreMax": 0,"ActiveSales": 0, "ScoreAvg": 0, "Headcount": 0, "Items": [
+        {"Department": "백엔드팀", "Sales": 600, "SalesAvg": 600, "TeamCount": 1, "ScoreMax": 88,"ActiveSales": 600, "ScoreAvg": 88,   "Headcount": 8},
+        {"Department": "프론트팀", "Sales": 400, "SalesAvg": 400, "TeamCount": 1, "ScoreMax": 82,"ActiveSales": 400, "ScoreAvg": 82,   "Headcount": 6},
+        {"Department": "DevOps팀", "Sales": 200, "SalesAvg": 200, "TeamCount": 1, "ScoreMax": 75,"ActiveSales": 200, "ScoreAvg": null, "Headcount": 3}
       ]}
     ]}
   ]
