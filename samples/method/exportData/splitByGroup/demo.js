@@ -67,15 +67,15 @@ ib = {
     var box = document.createElement("div"); box.style.display = "none"; document.body.appendChild(box)
     var self = this
 
-    Object.keys(groups).forEach(function (key, i) {
-      var id = "file_" + i
-      IBSheet.create({
-        id: id, el: box,
+    Object.keys(groups).forEach(function (key) {
+      // IBSheet.create 는 생성된 시트 객체를 반환한다 → window[id] 전역 대신 반환값 사용
+      var s = IBSheet.create({
+        el: box,
         options: { Cols: cols, Events: { onExportFinish: function (e) { e.sheet.dispose() } } },
         data: groups[key],
         sync: 1   // 동기 생성(바로 exportData 호출)
       })
-      window[id].exportData({ fileName: key + ".xlsx", sheetName: String(key), downHeader: true })
+      s.exportData({ fileName: key + ".xlsx", sheetName: String(key), downHeader: true })
       self.log("파일: " + key + ".xlsx (" + groups[key].length + "행)")
     })
   },
@@ -90,23 +90,23 @@ ib = {
     var box = document.createElement("div"); box.style.display = "none"; document.body.appendChild(box)
     var made = []
 
-    Object.keys(groups).forEach(function (key, i) {
-      var id = "ws_" + i
-      IBSheet.create({ id: id, el: box, options: { Cols: cols }, data: groups[key], sync: 1 })
-      made.push({ id: id, key: key })
+    Object.keys(groups).forEach(function (key) {
+      // IBSheet.create 의 반환값(시트 객체)을 사용
+      var s = IBSheet.create({ el: box, options: { Cols: cols }, data: groups[key], sync: 1 })
+      made.push({ sheet: s, key: key })
     })
 
-    var host = window[made[0].id]
+    var host = made[0].sheet
     host.exportDataBuffer(true)                              // 버퍼 시작
     made.forEach(function (m, idx) {
       var param = { sheetName: m.key, downHeader: true }
       if (idx === 0) param.fileName = fileName               // 파일명은 첫 exportData 에만
-      window[m.id].exportData(param)                         // 워크시트로 누적
+      m.sheet.exportData(param)                              // 워크시트로 누적
     })
     host.exportDataBuffer(false)                             // 버퍼 종료 → 한 파일 다운로드
     this.log("파일: " + fileName + " (워크시트: " + Object.keys(groups).join(", ") + ")")
 
-    setTimeout(function () { made.forEach(function (m) { var s = window[m.id]; if (s) s.dispose() }) }, 1500)
+    setTimeout(function () { made.forEach(function (m) { if (m.sheet) m.sheet.dispose() }) }, 1500)
   },
 
   //화면 기능
