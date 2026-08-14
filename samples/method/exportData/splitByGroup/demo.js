@@ -20,7 +20,7 @@ ib = {
       // 시트에 데이터를 넣습니다.
       evtParam.sheet.loadSearchData(ib.data)
     },
-    // ③ directExcelData 체이닝 전용: 체이닝 세션일 때만 앞 파일 완료 후 다음 파일
+    // ③ directExcelData 전용: 이 모드가 켜져 있을 때만 앞 파일이 끝난 뒤 다음 파일
     onExportFinish: function (evtParam) {
       if (!ib.chain) return
       ib.log("  ✔ " + ib.chainKeys[ib.chainIdx] + ".xlsx 완료")
@@ -30,14 +30,15 @@ ib = {
     }
   },
 
-  //③ directExcelData 체이닝 상태
+  //③ directExcelData 하나씩 다운로드 진행 상태
   chain: false, chainGroups: {}, chainKeys: [], chainIdx: 0, chainDownCols: "",
   fireDirect: function (srcSheet) {
     var k = this.chainKeys[this.chainIdx]
-    this.log("directExcelData: " + k + ".xlsx")
+    var fn = k + "_directExcelData.xlsx"        // 임시시트 방식과 구분되게 파일명에 표시
+    this.log("directExcelData: " + fn)
     srcSheet.exportData({
       directExcelData: this.chainGroups[k],
-      fileName: k + ".xlsx", sheetName: String(k),
+      fileName: fn, sheetName: String(k),
       downCols: this.chainDownCols, downHeader: true
     })
   },
@@ -88,8 +89,8 @@ ib = {
     var self = this
 
     Object.keys(groups).forEach(function (key) {
-      // sync 없이 비동기 생성 → 시트를 많이 만들어도 메인 스레드가 막히지 않음(freeze 방지)
-      // 생성 완료(onRenderFirstFinish) 시 자기 자신을 exportData, 완료(onExportFinish) 시 dispose
+      // sync 없이 비동기로 생성 → 시트를 많이 만들어도 화면이 멈추지 않음
+      // 생성이 끝나면(onRenderFirstFinish) 그 시트가 자기 데이터를 exportData, 끝나면(onExportFinish) dispose
       IBSheet.create({
         el: box,
         options: {
@@ -137,7 +138,7 @@ ib = {
   },
 
   //---------------------------------------------------------------
-  // ③ directExcelData: 임시시트 없이 시트 하나로 "여러 파일" (onExportFinish 체이닝)
+  // ③ directExcelData: 임시시트 없이 시트 하나로 "여러 파일" (앞 파일이 끝나면 다음 파일)
   //    그룹이 많아 임시시트를 여러 개 만들기 부담될 때 유리 (시트 생성 0개)
   //---------------------------------------------------------------
   exportDirectPerFile: function (srcSheet, keyName, downCols) {
@@ -182,7 +183,7 @@ ib = {
         break
       case '워크시트 (directExcelData)':
         this.log("=== ④ 한 파일 워크시트 (directExcelData, 임시시트 X) ===")
-        this.exportDirectWorksheets(sheet, "USER", "SEQ|CAT|ITEM|AMT", "가계부_direct.xlsx")
+        this.exportDirectWorksheets(sheet, "USER", "SEQ|CAT|ITEM|AMT", "가계부_directExcelData.xlsx")
         break
       case '로그 지우기':
         document.getElementById("log").textContent = ""

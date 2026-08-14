@@ -19,7 +19,7 @@ ib = {
     onRenderFirstFinish: function (evtParam) {
       evtParam.sheet.loadSearchData(ib.data)
     },
-    // 방법2(체이닝) 전용: 체이닝 세션이 켜져 있을 때만 앞 파일 완료 후 다음 파일 다운로드
+    // 방법2(하나씩) 전용: 이 모드가 켜져 있을 때만 앞 파일이 끝난 뒤 다음 파일 다운로드
     onExportFinish: function (evtParam) {
       if (!ib.chain) return
       ib.log("  ✔ " + ib.chainFiles[ib.chainIdx].fileName + " 완료")
@@ -34,7 +34,7 @@ ib = {
     }
   },
 
-  //체이닝 상태
+  //하나씩 다운로드 진행 상태
   chain: false, chainFiles: [], chainIdx: 0,
 
   //시트객체 생성
@@ -99,9 +99,9 @@ ib = {
           sheet.down2Excel({ fileName: f.fileName, downRows: f.downRows, useXhr: 1 })
         })
         break
-      case '여러 파일 (체이닝)':
-        // 방법2: onExportFinish 에서 다음 파일 (크로스도메인에서도 동작)
-        this.log("=== 여러 파일 (onExportFinish 체이닝) ===")
+      case '여러 파일 (하나씩)':
+        // 방법2: 앞 파일이 끝나면 다음 파일 (크로스도메인에서도 동작)
+        this.log("=== 여러 파일 (하나씩, 앞 파일이 끝나면 다음) ===")
         this.chainFiles = this.filesByUser(); this.chainIdx = 0; this.chain = true
         this.log("down2Excel: " + this.chainFiles[0].fileName)
         sheet.down2Excel(this.chainFiles[0])

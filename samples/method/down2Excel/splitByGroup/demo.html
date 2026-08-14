@@ -17,13 +17,13 @@
 </p>
 <ul style="margin:0 0 8px;padding-left:18px;font-size:12px;color:#444;line-height:1.7">
   <li><b>여러 파일 (downRows+useXhr)</b> : 한 시트에서 <b>downRows로 행을 골라</b> <code>useXhr:1</code>로 각각 다운로드. 간편하지만 <b>서버가 다른 도메인이면 CORS에 걸릴 수 있습니다.</b></li>
-  <li><b>여러 파일 (체이닝)</b> : 앞 파일이 끝나면(<code>onExportFinish</code>) 다음 파일. <b>크로스도메인에서도 동작합니다.</b></li>
+  <li><b>여러 파일 (하나씩)</b> : 앞 파일이 끝나면 다음 파일을 이어서 받습니다. <b>서버가 다른 도메인이어도 동작합니다.</b></li>
   <li><b>한 파일 워크시트 (buffer)</b> : 임시 시트 + <code>down2ExcelBuffer</code>로 <b>한 파일 안에 워크시트 3개</b>.</li>
 </ul>
 
 <div>
   <button type='button' onclick='ib.sampleBtn(this)'>여러 파일 (downRows+useXhr)</button>
-  <button type='button' onclick='ib.sampleBtn(this)'>여러 파일 (체이닝)</button>
+  <button type='button' onclick='ib.sampleBtn(this)'>여러 파일 (하나씩)</button>
   <button type='button' onclick='ib.sampleBtn(this)'>한 파일 워크시트 (buffer)</button>
   <button type='button' onclick='ib.sampleBtn(this)'>로그 지우기</button>
 </div>
