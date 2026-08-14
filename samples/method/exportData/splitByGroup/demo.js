@@ -84,15 +84,19 @@ ib = {
   //---------------------------------------------------------------
   exportPerFile: function (srcSheet, keyName, downCols) {
     var groups = this.groupBy(srcSheet, keyName)
-    var cols = this.pickCols(srcSheet, downCols)
-    var box = document.createElement("div"); box.style.display = "none"; document.body.appendChild(box)
     var self = this
 
     Object.keys(groups).forEach(function (key) {
+      // 시트마다 (1) 각자 div (2) 새로 복제한 컬럼 정의
+      //  - 한 div 공유·같은 cols 공유는 2번째+ 시트의 헤더(글자/색)를 유실시킴 → 시트마다 새로
+      var d = document.createElement("div")
+      d.style.cssText = "position:absolute; left:-10000px; top:0; width:900px; height:300px;"
+      document.body.appendChild(d)
+      var cols = JSON.parse(JSON.stringify(self.pickCols(srcSheet, downCols)))   // 컬럼 정의 복제(공유 방지)
       // sync 없이 비동기로 생성 → 시트를 많이 만들어도 화면이 멈추지 않음
       // 생성이 끝나면(onRenderFirstFinish) 그 시트가 자기 데이터를 exportData, 끝나면(onExportFinish) dispose
       IBSheet.create({
-        el: box,
+        el: d,
         options: {
           Cols: cols,
           Events: {
@@ -114,13 +118,17 @@ ib = {
   //---------------------------------------------------------------
   exportWorksheets: function (srcSheet, keyName, downCols, fileName) {
     var groups = this.groupBy(srcSheet, keyName)
-    var cols = this.pickCols(srcSheet, downCols)
-    var box = document.createElement("div"); box.style.display = "none"; document.body.appendChild(box)
     var made = []
+    var self = this
 
     Object.keys(groups).forEach(function (key) {
+      // 시트마다 각자 div + 새로 복제한 컬럼 정의 (cols 공유하면 2번째+ 워크시트 헤더 유실)
+      var d = document.createElement("div")
+      d.style.cssText = "position:absolute; left:-10000px; top:0; width:900px; height:300px;"
+      document.body.appendChild(d)
+      var cols = JSON.parse(JSON.stringify(self.pickCols(srcSheet, downCols)))   // 컬럼 정의 복제(공유 방지)
       // IBSheet.create 의 반환값(시트 객체)을 사용
-      var s = IBSheet.create({ el: box, options: { Cols: cols }, data: groups[key], sync: 1 })
+      var s = IBSheet.create({ el: d, options: { Cols: cols }, data: groups[key], sync: 1 })
       made.push({ sheet: s, key: key })
     })
 
