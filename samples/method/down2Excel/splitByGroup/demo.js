@@ -68,12 +68,12 @@ ib = {
     sheet.getSaveJson({ saveMode: 0 }).data.forEach(function (row) {
       (groups[row.USER] = groups[row.USER] || []).push(row)
     })
-    var cols = sheet.getUserOptions().Cols
-    var box = document.createElement("div"); box.style.display = "none"; document.body.appendChild(box)
     var made = []
     Object.keys(groups).forEach(function (key) {
-      // IBSheet.create 는 생성된 시트 객체를 반환한다 → window[id] 전역 대신 반환값을 사용
-      var s = IBSheet.create({ el: box, options: { Cfg: { Export: { Url: EXPORT_URL } }, Cols: cols }, data: groups[key], sync: 1 })
+      // 시트마다 각자 숨김 div + 컬럼 정의 복제 (cols 공유하면 2번째+ 워크시트 헤더 유실)
+      var d = document.createElement("div"); d.style.display = "none"; document.body.appendChild(d)
+      var cols = JSON.parse(JSON.stringify(sheet.getUserOptions().Cols))
+      var s = IBSheet.create({ el: d, options: { Cfg: { Export: { Url: EXPORT_URL } }, Cols: cols }, data: groups[key], sync: 1 })
       made.push({ sheet: s, key: key })
     })
     var host = made[0].sheet
