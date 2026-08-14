@@ -74,7 +74,7 @@ ib = {
       var d = document.createElement("div"); d.style.display = "none"; document.body.appendChild(d)
       var cols = JSON.parse(JSON.stringify(sheet.getUserOptions().Cols))
       var s = IBSheet.create({ el: d, options: { Cfg: { Export: { Url: EXPORT_URL } }, Cols: cols }, data: groups[key], sync: 1 })
-      made.push({ sheet: s, key: key })
+      made.push({ sheet: s, key: key, div: d })   // 정리용으로 div 도 보관
     })
     var host = made[0].sheet
     host.down2ExcelBuffer(true)                            // 버퍼 시작
@@ -85,7 +85,7 @@ ib = {
     })
     host.down2ExcelBuffer(false)                           // 버퍼 종료 → 한 파일
     this.log("파일: 가계부.xlsx (워크시트: " + Object.keys(groups).join(", ") + ")")
-    setTimeout(function () { made.forEach(function (m) { if (m.sheet) m.sheet.dispose() }) }, 2000)
+    setTimeout(function () { made.forEach(function (m) { if (m.sheet) { m.sheet.dispose(); m.div.remove() } }) }, 2000)
   },
 
   //화면 기능
