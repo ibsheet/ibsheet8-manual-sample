@@ -11,7 +11,8 @@ ib = {
   },
   "Def": {
     "Row": {
-      "CanFormula": true
+      "CanFormula": true,
+      "CalcOrder": "status,deptButton"
     }
   },
   //틀고정 좌측 컬럼 설정
@@ -26,6 +27,7 @@ ib = {
     {"Header": "줄넘김문자열(Lines)","Type": "Text","Name": "LinesData","Width": 250,"Align": "Center","CanEdit": 1},
     {"Header": "콤보(Enum)","Type": "Enum","Name": "ComboData","Width": 100,"Align": "Right","Enum": "|대기|진행중|완료","EnumKeys": "|01|02|03"},
     {"Header": "버튼(Button)","Type": "Button","Name": "ISO","Width": 120,"Align": "Left","CanEdit": 0,"Button": "Button"},
+    {Header: "부서(Popup)", Name: "dept", Extend: IB_Preset.Popup, Width: 100},
     {"Header": "정수(Int)","Type": "Int","Name": "IntData","Width": 80,"Align": "Right","CanEdit": 1},
     {"Header": "실수(Float)","Type": "Float","Name": "FloatData","Width": 80,"Align": "Right","CanEdit": 1},
     {"Header": "날짜(Date)","Type": "Date","Name": "DateData","Width": 150,"Align": "Center","CanEdit": 1,"EmptyValue": "날짜를 입력해주세요"},
